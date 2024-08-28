@@ -1,0 +1,49 @@
+
+
+.text-topic {
+    font-size: 30px;
+    font-weight: regular; 
+    color: #801111;
+    font-family: 'Prompt'; 
+    margin-bottom: 20px; /* Add some space after the title */
+}
+
+.text-detail {
+    font-size: 20px;
+    font-weight: light; 
+    color: #000000;
+    font-family: 'Prompt';
+    line-height: 1.8; /* Adjust line height for better readability */
+    text-align: justify; /* Justify the text */
+    margin-bottom: 15px; /* Add space between paragraphs */
+
+}   
+
+.text-detail-indent {
+    font-size: 20px;
+    font-weight: light; 
+    color: #000000;
+    font-family: 'Prompt';
+    line-height: 1.8; /* Adjust line height for better readability */
+    text-align: justify; /* Justify the text */
+    margin-bottom: 15px; /* Add space between paragraphs */
+    text-indent: 2em; /* Indent the first line of each paragraph */
+}
+
+.text-bold {
+    font-size: 22px;
+    font-weight: regular;
+    color: #801111;
+    font-family: 'Prompt';
+    margin-top: 20px; /* Space before section titles */
+    margin-bottom: 10px; /* Space after section titles */
+}
+
+.text-not {
+    margin-top: 10%;
+    font-size: 90px;
+    font-weight: medium;
+    color: #716B6B;
+    font-family: 'Prompt';
+ 
+}

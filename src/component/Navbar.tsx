@@ -128,7 +128,7 @@ function Navbar({ status }: NavbarProps) {
           {aboutDropdownOpen && (
             <Box sx={dropdownMenuStyles}>
               <Button sx={[dropdownItemStyles, { width: '180px', height: '40px' }]} component="a" href="/history">ประวัติความเป็นมา</Button>
-              <Button sx={[dropdownItemStyles, { width: '180px', height: '40px' }]} component="a" href="#">วิสัยทัศน์/พันธกิจ</Button>
+              <Button sx={[dropdownItemStyles, { width: '180px', height: '40px' }]} component="a" href="/vision-mission">วิสัยทัศน์/พันธกิจ</Button>
             </Box>
           )}
         </Box>
@@ -146,14 +146,14 @@ function Navbar({ status }: NavbarProps) {
           </Button>
           {studentServicesDropdownOpen && (
             <Box sx={dropdownMenuStyles}>
-              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="#">งานทุนการศึกษา</Button>
-              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="#">งานส่งเสริมกิจกรรมนักศึกษา</Button>
-              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="#">งานวินัยนักศึกษา</Button>
-              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="#">งานให้คำปรึกษาและดูแลสุขภาพจิต</Button>
-              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="#">สวัสดิการสุขภาพนักศึกษา</Button>
-              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px', fontSize: '16px' }]} component="a" href="#">Entaneer Upskill</Button>
-              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="#">จองสถานที่</Button>
-              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="#">หนังสือรับรอง</Button>
+              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="/scholarship">งานทุนการศึกษา</Button>
+              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="/activities">งานส่งเสริมกิจกรรมนักศึกษา</Button>
+              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="/discipline">งานวินัยนักศึกษา</Button>
+              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="/entaneermind">งานให้คำปรึกษาและดูแลสุขภาพจิต</Button>
+              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="/welfare">สวัสดิการสุขภาพนักศึกษา</Button>
+              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px', fontSize: '16px' }]} component="a" href="/entaneer-upskill">Entaneer Upskill</Button>
+              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="/reserve-place">จองสถานที่</Button>
+              <Button sx={[dropdownItemStyles, { width: '290px', height: '40px' }]} component="a" href="/certification">หนังสือรับรอง</Button>
             </Box>
           )}
         </Box>
