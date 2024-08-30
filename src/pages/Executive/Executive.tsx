@@ -13,7 +13,7 @@ import Footer from '../../component/Footer';
 const cardData = [
   {
     image: img1,
-    title: 'ผู้ช่วยศาสตราจารย์ ดร.ปวรุตม์ จงชาญสิทโธ\nAssistant Professor Pawarut Jongchansitto, Ph.D.',
+    title: 'รองศาสตราจารย์ ดร.ปวรุตม์ จงชาญสิทโธ\nAssociate Professor Pawarut Jongchansitto, Ph.D.',
     subtitle: 'รองคณบดี',
     contact: 'โทรศัพท์ : 053-944101-3\nEmail : pawarut.j@cmu.ac.th'
   },

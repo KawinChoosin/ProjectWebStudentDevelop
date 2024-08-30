@@ -41,6 +41,7 @@ const News = () => {
           fontFamily: 'Prompt',
         }}
       >
+            
         <Typography
           variant="h4"
           component="h2"
@@ -50,6 +51,8 @@ const News = () => {
             marginBottom: '20px',
             position: 'relative',
             display: 'inline-block',
+            fontFamily: 'Prompt',
+            fontSize: '40px',
             '&:after': {
               content: '""',
               display: 'block',
@@ -59,7 +62,7 @@ const News = () => {
               marginTop: '5px',
               position: 'absolute',
               left: '0',
-              bottom: '-5px',
+   
             },
           }}
         >
