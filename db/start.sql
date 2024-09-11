@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS Puttana_DB;
+
+USE Puttana_DB;
+
+CREATE TABLE IF NOT EXISTS ImgSlider (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    filePath 
+
+)

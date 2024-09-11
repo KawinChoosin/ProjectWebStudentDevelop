@@ -14,6 +14,11 @@ import Welfare from './pages/student-service/Welfare';
 import EntaneerUpskill from './pages/student-service/EntaneerUpskill';
 import Reserve from './pages/student-service/ReservePlace';
 import Certification from './pages/student-service/Certification';
+import CareerDay from './pages/EJS/Careerday';
+import JobSearch from './pages/EJS/FindJob';
+import ExternalJobs from './pages/EJS/GetJob';
+import Announcements from './pages/Announcements/Announcement';
+import AppForm from './pages/Formpage/UploadFile';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -31,24 +36,11 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="/entaneer-upskill" element={<EntaneerUpskill />} />
         <Route path="/reserve-place" element={<Reserve />} />
         <Route path="/certification" element={<Certification />} />
-        {/* <Route path="/about" element={<About />} />
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        <Route path="/book-place" element={<BookPlace />} />
-        
-        <Route path="/administration" element={<Administration />} />
-        <Route path="/job-search" element={<JobSearch />} />
         <Route path="/career-day" element={<CareerDay />} />
+        <Route path="/job-search" element={<JobSearch />} />
         <Route path="/external-jobs" element={<ExternalJobs />} />
-        <Route path="/apply-jobs" element={<ApplyJobs />} />
-        <Route path="/announcements" element={<Announcements />} /> */}
+        <Route path="/announcements" element={<Announcements />} />
+        <Route path="/admin" element={<AppForm />} />
       </Routes>
     </Router>
   </React.StrictMode>

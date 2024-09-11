@@ -170,9 +170,9 @@ function Navbar({ status }: NavbarProps) {
           </Button>
           {ejsDropdownOpen && (
             <Box sx={dropdownMenuStyles}>
-              <Button sx={[dropdownItemStyles, { width: '265px', height: '40px', fontSize: '16px' }]} component="a" href="#">CAREER DAY</Button>
-              <Button sx={[dropdownItemStyles, { width: '265px', height: '40px' }]} component="a" href="#">จัดหางาน(หน่วยงานภายนอก)</Button>
-              <Button sx={[dropdownItemStyles, { width: '265px', height: '40px' }]} component="a" href="#">สมัครงาน(บุคลากร/นักศึกษา)</Button>
+              <Button sx={[dropdownItemStyles, { width: '270px', height: '40px', fontSize: '16px' }]} component="a" href="/career-day">CAREER DAY</Button>
+              <Button sx={[dropdownItemStyles, { width: '270px', height: '40px' }]} component="a" href="/job-search">จัดหางาน(หน่วยงานภายนอก)</Button>
+              <Button sx={[dropdownItemStyles, { width: '270px', height: '40px' }]} component="a" href="/external-jobs">สมัครงาน(บุคลากร/นักศึกษา)</Button>
             </Box>
           )}
         </Box>
@@ -188,7 +188,7 @@ function Navbar({ status }: NavbarProps) {
           onMouseEnter={() => handleMouseEnter('ประกาศ/ข้อบังคับ/ระเบียบ')}
           onMouseLeave={() => handleMouseLeave('ประกาศ/ข้อบังคับ/ระเบียบ')}
         >
-          <Button sx={dropdownButtonStyles}>ประกาศ/ข้อบังคับ/ระเบียบ</Button>
+          <Button sx={dropdownButtonStyles} href="/announcements">ประกาศ/ข้อบังคับ/ระเบียบ</Button>
         </Box>
       </Box>
     </div>

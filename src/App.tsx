@@ -1,6 +1,5 @@
 import Navbar from './component/Navbar';
 import Footer from './component/Footer';
-import { Box } from '@mui/material';
 import Mainpic from './pages/Homepage/mainpic';
 import ButtonService from './pages/Homepage/ButtonService';
 import ActivityImage from './pages/Homepage/ActivityImage'
