@@ -18,7 +18,10 @@ import CareerDay from './pages/EJS/Careerday';
 import JobSearch from './pages/EJS/FindJob';
 import ExternalJobs from './pages/EJS/GetJob';
 import Announcements from './pages/Announcements/Announcement';
+<<<<<<< HEAD
 import AppForm from './pages/Formpage/UploadFile';
+=======
+>>>>>>> acbca41f02c0df30ddbddd341858b072eaea6d07
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -40,7 +43,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="/job-search" element={<JobSearch />} />
         <Route path="/external-jobs" element={<ExternalJobs />} />
         <Route path="/announcements" element={<Announcements />} />
+<<<<<<< HEAD
         <Route path="/admin" element={<AppForm />} />
+=======
+>>>>>>> acbca41f02c0df30ddbddd341858b072eaea6d07
       </Routes>
     </Router>
   </React.StrictMode>
