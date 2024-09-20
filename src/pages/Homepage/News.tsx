@@ -5,14 +5,20 @@ import { FacebookEmbed } from 'react-social-media-embed';
 const FacebookPosts = ({ postUrls }:any) => {
   return (
     <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '30px',
-        justifyContent: 'center',
-        margin: '20px auto',
-        marginBottom: '100px',
-      }}
+    sx={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: '30px',
+      justifyContent: 'center',
+      margin: '20px auto',
+      marginBottom: '100px',
+      '@media (max-width: 1100px)': { // Adjust this breakpoint as needed
+        gridTemplateColumns: 'repeat(2, 1fr)', // Change to 2 columns
+      },
+      '@media (max-width: 800px)': { // Another breakpoint for smaller screens
+        gridTemplateColumns: '1fr', // Change to 1 column
+      },
+    }}
     >
       {postUrls.map((url, index) => (
         <Card key={index} sx={{ maxWidth: '400px', boxShadow: 4, maxHeight: '500px' }}>

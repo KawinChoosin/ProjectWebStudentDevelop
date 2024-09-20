@@ -24,9 +24,9 @@ function Footer() {
           data-show-facepile="true"
           style={{
             padding: '0 20px',
-            display: 'flex',
-            justifyContent: 'flex-end',
-          }} // Padding for the Facebook embed
+            width: '380px', // Set a fixed width
+            margin: '0 auto', // Center the block
+          }}
         >
           <blockquote
             cite="https://www.facebook.com/StudentDevelopmentENG"
@@ -43,37 +43,40 @@ function Footer() {
     <Box
       sx={{
         width: '100%',
-        height: '500px',
+        height: 'auto', // Allow flexibility
         background: 'linear-gradient(to bottom, #C33443 0%, #5D1920 100%)',
         boxSizing: 'border-box',
-        padding: '0 20px',
+        padding: '20px',
         position: 'relative',
         display: 'flex',
-        alignItems: 'center', // Center items vertically
-        justifyContent: 'space-between', // Distribute items horizontally
-        zIndex: 10, // Ensure footer is behind the navbar
+        flexDirection: { xs: 'column', md: 'row' }, // Stack on small screens
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        zIndex: 10,
+    
       }}
     >
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Box
             sx={{
+              display: "flex",
+              flexDirection: "column",
               width: '100%',
-              height: '200px',
-              fontSize: '18px',
+              fontSize: { xs: '18px', md: '18px' },
               fontFamily: 'Prompt',
               fontWeight: 'light',
               color: 'white',
               padding: '0 5px',
               boxSizing: 'border-box',
-              lineHeight: '40px',
+              lineHeight: { xs: '30px', md: '40px' },
             }}
           >
             <Box
               component="img"
               src={Englogo}
               alt="LogoFoot"
-              sx={{ height: '30%', cursor: 'pointer' }}
+              sx={{ maxHeight: '100px', cursor: 'pointer', maxWidth: "380px" }}
             />
             <Box sx={{ padding: '0 15px' }}>
               งานพัฒนาคุณภาพนักศึกษา<br />
@@ -82,35 +85,40 @@ function Footer() {
               ✆ โทรศัพท์ 053-944179 ต่อ 100,111,112 เบอร์มือถือ 082-9845234
             </Box>
           </Box>
-          <Box
-            sx={{
-              marginTop: '150px',
-              marginLeft: '20px',
-            }}
-          >
-            <Box
-              sx={{
-                width: '480px',
-                height: '2px',
-                backgroundColor: 'white',
-              }}
-            />
-            <Typography
-              sx={{
-                marginTop: '10px',
-                color: 'white',
-                fontSize: '14px',
-                fontFamily: 'Prompt',
-                fontWeight: 'light',
-              }}
-            >
-              Copyrights © 2024 All Rights Reserved by งานพัฒนาคุณภาพนักศึกษา
-            </Typography>
+        </Grid>
+        
+        <Grid item xs={12} md={6} sx={{ paddingRight: { xs: '0', md: '40px' } }}>
+          <Box sx={{ display: 'flex', justifyContent: { xs: 'flex-start', md: 'flex-end' } }}>
+            <FacebookPageEmbed />
           </Box>
         </Grid>
-        <Grid item xs={6} sx={{ paddingRight: '20px' }}>
-          <FacebookPageEmbed />
-        </Grid>
+
+        <Box sx={{ display: "flex", flexDirection: "column", marginTop: '30px' }}>
+          <Box
+            sx={{
+              maxWidth: '100%',
+              height: '2px',
+              backgroundColor: 'white',
+              marginBottom: "10px",
+              marginLeft: "7%",
+              padding: '0 5px',
+            }}
+          />
+          <Typography
+            sx={{
+              width: "100%",
+              color: 'white',
+              fontSize: { xs: '14px', md: '16px' },
+              fontFamily: 'Prompt',
+              fontWeight: 'light',
+              textAlign: 'left',
+              marginLeft: "7%",
+              padding: '0 5px',
+            }}
+          >
+            Copyrights © 2024 All Rights Reserved by งานพัฒนาคุณภาพนักศึกษา
+          </Typography>
+        </Box>
       </Grid>
     </Box>
   );

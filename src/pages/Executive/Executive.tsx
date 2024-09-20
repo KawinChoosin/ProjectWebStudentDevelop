@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../../component/Navbar';
-import { Box, Card, CardContent, CardMedia, Typography,Grid } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import img1 from './Pic_exe/1.jpg'; // Ensure this path is correct
 import img2 from './Pic_exe/2.jpg';
 import img3 from './Pic_exe/3.jpg'; // Ensure this path is correct
@@ -57,45 +57,45 @@ const cardData = [
 
 function CardComponent({ image, title, subtitle, contact }) {
   return (
-    <Card sx={{ width: '540px', height: '650px' ,boxShadow: 'none' ,border: 'none'}}>
+    <Card sx={{ width: '540px', height: '680px', boxShadow: 'none', border: 'none' }}>
       <CardMedia
         component="img"
         height="470"
         image={image}
         alt={title}
-        sx={{ width: '450px', margin: '0 auto',boxShadow: '5' ,border: '2px' }}
+        sx={{ width: '450px', margin: '0 auto', boxShadow: '5', border: '2px' }}
       />
       <CardContent>
-        <Typography 
-          sx={{ 
-            fontSize: '20px', 
-            fontWeight: 'medium', 
-            fontFamily: 'Prompt', 
-            textAlign: 'center', 
-            marginBottom: '10px' ,
+        <Typography
+          sx={{
+            fontSize: '20px',
+            fontWeight: 'medium',
+            fontFamily: 'Prompt',
+            textAlign: 'center',
+            marginBottom: '10px',
             whiteSpace: 'pre-line'
           }}
         >
           {title}
         </Typography>
-        <Typography 
-          sx={{ 
-            fontSize: '16px', 
-            fontWeight: 'medium', 
-            fontFamily: 'Prompt', 
-            textAlign: 'center', 
-            marginBottom: '5px' ,
+        <Typography
+          sx={{
+            fontSize: '16px',
+            fontWeight: 'medium',
+            fontFamily: 'Prompt',
+            textAlign: 'center',
+            marginBottom: '5px',
             whiteSpace: 'pre-line'
           }}
         >
           {subtitle}
         </Typography>
-        <Typography 
-          sx={{ 
-            fontSize: '16px', 
-            fontWeight: 'ExtraLight', 
-            fontFamily: 'Prompt', 
-            textAlign: 'center' ,
+        <Typography
+          sx={{
+            fontSize: '16px',
+            fontWeight: 'ExtraLight',
+            fontFamily: 'Prompt',
+            textAlign: 'center',
             whiteSpace: 'pre-line'
           }}
         >
@@ -113,9 +113,9 @@ function Executive() {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
-        maxWidth: '100%', // Full width of the viewport
-        padding: '0', // Remove any default padding
-        margin: '0', // Remove any default margin
+        maxWidth: '100%',
+        padding: '0',
+        margin: '0',
       }}
     >
       <Navbar status={false} />
@@ -133,48 +133,45 @@ function Executive() {
           sx={{
             fontSize: '40px',
             fontWeight: 'Medium',
-            color: '#b00020', // Red text color
+            color: '#b00020',
             fontFamily: 'Prompt',
             display: 'inline-block',
             position: 'relative',
-            paddingBottom: '10px', // Space for the underline
+            paddingBottom: '10px',
             '&:after': {
               content: '""',
               position: 'absolute',
-              width: '200%', // Width of the underline
-              height: '3px', // Thickness of the underline
-              backgroundColor: '#b00020', // Red underline color
-              bottom: '0', // Position the underline at the bottom
+              width: '200%',
+              height: '3px',
+              backgroundColor: '#b00020',
+              bottom: '0',
               left: '50%',
-              transform: 'translateX(-50%)', // Center the underline relative to the text
+              transform: 'translateX(-50%)',
             },
           }}
         >
           ผู้บริหาร
         </Box>
       </Box>
-      <Box 
-        sx={{ 
-          display: 'flex', 
-          flexDirection: 'row',
-          justifyContent: 'space-between',  // Ensures cards are aligned left and right
-          width: '100%', // Full width for proper spacing
-          gap:'20px',
-          justifyContent:'center',
+
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap', // Allows wrapping of cards
+          justifyContent: 'center',
+          gap: '20px',
+          width: '100%',
         }}
-      > 
-        <CardComponent
-          image={cardData[0].image}
-          title={cardData[0].title}
-          subtitle={cardData[0].subtitle}
-          contact={cardData[0].contact}
-        />
-        <CardComponent
-          image={cardData[1].image}
-          title={cardData[1].title}
-          subtitle={cardData[1].subtitle}
-          contact={cardData[1].contact}
-        />
+      >
+        {cardData.slice(0, 2).map((data, index) => (
+          <CardComponent
+            key={index}
+            image={data.image}
+            title={data.title}
+            subtitle={data.subtitle}
+            contact={data.contact}
+          />
+        ))}
       </Box>
 
       <Box
@@ -191,90 +188,90 @@ function Executive() {
           sx={{
             fontSize: '40px',
             fontWeight: 'Medium',
-            color: '#b00020', // Red text color
+            color: '#b00020',
             fontFamily: 'Prompt',
             display: 'inline-block',
             position: 'relative',
-            paddingBottom: '10px', // Space for the underline
+            paddingBottom: '10px',
             '&:after': {
               content: '""',
               position: 'absolute',
-              width: '200%', // Width of the underline
-              height: '3px', // Thickness of the underline
-              backgroundColor: '#b00020', // Red underline color
-              bottom: '0', // Position the underline at the bottom
+              width: '200%',
+              height: '3px',
+              backgroundColor: '#b00020',
+              bottom: '0',
               left: '50%',
-              transform: 'translateX(-50%)', // Center the underline relative to the text
+              transform: 'translateX(-50%)',
             },
           }}
         >
           บุคลากร
         </Box>
       </Box>
-      <Box 
-        sx={{ 
-          display: 'flex', 
-          width: '100%', // Full width for proper spacing
-          justifyContent:'center',
+
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap', // Allows wrapping of cards
+          justifyContent: 'center',
+          gap: '20px',
+          width: '100%',
         }}
-      > 
-            <CardComponent
-              image={cardData[2].image}
-              title={cardData[2].title}
-              subtitle={cardData[2].subtitle}
-              contact={cardData[2].contact}
-            />
+      >
+        {cardData.slice(2, 3).map((data, index) => (
+          <CardComponent
+            key={index}
+            image={data.image}
+            title={data.title}
+            subtitle={data.subtitle}
+            contact={data.contact}
+          />
+        ))}
       </Box>
-      <Box 
-        sx={{ 
-          display: 'flex', 
-          flexDirection: 'row',
-          justifyContent: 'space-between',  // Ensures cards are aligned left and right
-          width: '100%', // Full width for proper spacing
-          gap:'20px',
-          justifyContent:'center',
-          marginTop:'20px'
+
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap', // Allows wrapping of cards
+          justifyContent: 'center',
+          gap: '20px',
+          width: '100%',
+          marginTop: '20px',
         }}
-      > 
-        <CardComponent
-          image={cardData[3].image}
-          title={cardData[3].title}
-          subtitle={cardData[3].subtitle}
-          contact={cardData[3].contact}
-        />
-        <CardComponent
-          image={cardData[4].image}
-          title={cardData[4].title}
-          subtitle={cardData[4].subtitle}
-          contact={cardData[4].contact}
-        />
+      >
+        {cardData.slice(3, 5).map((data, index) => (
+          <CardComponent
+            key={index}
+            image={data.image}
+            title={data.title}
+            subtitle={data.subtitle}
+            contact={data.contact}
+          />
+        ))}
       </Box>
-      <Box 
-        sx={{ 
-          display: 'flex', 
-          flexDirection: 'row',
-          justifyContent: 'space-between',  // Ensures cards are aligned left and right
-          width: '100%', // Full width for proper spacing
-          gap:'20px',
-          justifyContent:'center',
-          marginTop:'20px',
-          marginBottom:'40px'
+
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap', // Allows wrapping of cards
+          justifyContent: 'center',
+          gap: '20px',
+          width: '100%',
+          marginTop: '20px',
+          marginBottom: '40px',
         }}
-      > 
-        <CardComponent
-          image={cardData[5].image}
-          title={cardData[5].title}
-          subtitle={cardData[5].subtitle}
-          contact={cardData[5].contact}
-        />
-        <CardComponent
-          image={cardData[6].image}
-          title={cardData[6].title}
-          subtitle={cardData[6].subtitle}
-          contact={cardData[6].contact}
-        />
-        
+      >
+        {cardData.slice(5, 7).map((data, index) => (
+          <CardComponent
+            key={index}
+            image={data.image}
+            title={data.title}
+            subtitle={data.subtitle}
+            contact={data.contact}
+          />
+        ))}
       </Box>
+
       <Box sx={{ textAlign: 'center', marginTop: '10px', marginBottom: '10px', height: '100px', width: '100%', position: 'relative' }}>
         <Box
           sx={{

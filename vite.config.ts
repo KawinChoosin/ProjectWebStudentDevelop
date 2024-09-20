@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0', // Make the server accessible externally
-    port: 3333,
+    port: 5173,
     proxy: {
       "/api": {
-        target: "http://backend:2222", // change backend to sever ip
+        target: "http://localhost:5000",
         changeOrigin: true,
         secure: false,
         ws: true,
@@ -30,6 +30,12 @@ export default defineConfig({
           });
         },
       },
-    },
+      "/uploads": {
+        target: "http://localhost:5000", // Ensure the uploads are also proxied
+        changeOrigin: true,
+        secure: false,
+      },
+    }
+    
   },
 });

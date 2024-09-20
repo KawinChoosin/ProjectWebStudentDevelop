@@ -1,30 +1,20 @@
-# React + TypeScript + Vite
+docker exec -it puttana_db bash
+psql -U usertest -d puttana_db
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+docker exec -it p1db psql -U usertest -d postgres
 
-Currently, two official plugins are available:
+REVOKE CONNECT ON DATABASE puttana_db FROM public;
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+CREATE USER ptuser WITH PASSWORD '1234';
+GRANT CONNECT ON DATABASE puttana_db TO ptuser;
+GRANT USAGE ON SCHEMA public TO ptuser;
+GRANT CREATE ON SCHEMA public TO ptuser;
+GRANT ALL ON DATABASE puttana_db TO ptuser;
+GRANT ALL ON SCHEMA public TO ptuser;
+ALTER USER ptuser CREATEDB;
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+# Database prisma setup
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+npx prisma migrate dev --name init
+npx prisma generate
+```

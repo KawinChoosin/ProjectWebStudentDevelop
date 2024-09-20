@@ -1,110 +1,199 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Card, CardContent, Typography, CardMedia, Box } from '@mui/material';
+import { TextField, Button, Card, CardContent, Typography, CardMedia, Box, Grid } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { DropzoneArea } from 'mui-file-dropzone';
 import axios from 'axios';
 
 const FileUploadForm = () => {
-  const [file, setFile] = useState(null);
-  const [filePreview, setFilePreview] = useState(null);
-  const [info, setInfo] = useState('');
-  const [uploadedFiles, setUploadedFiles] = useState([]);
+  // State for imgslide table form
+  const [uploadedImages, setUploadedImages] = useState([]);
+  const [uploadedDocs, setUploadedDocs] = useState([]);
+  const [fileImg, setFileImg] = useState(null);
+  const [filePreviewImg, setFilePreviewImg] = useState(null);
+  const [infoImg, setInfoImg] = useState('');
+  const [imgFiles, setImgFiles] = useState([]);
+  const [docFiles, setDocFiles] = useState([]);
 
-  const handleDropzoneChange = (files) => {
-    if (files.length > 0) {
-      const selectedFile = files[0];
-      setFile(selectedFile);
-      setFilePreview(URL.createObjectURL(selectedFile));
-    }
+  // State for filept table form
+  const [fileDoc, setFileDoc] = useState(null);
+  const [filePreviewDoc, setFilePreviewDoc] = useState(null);
+  const [fileName, setFileName] = useState('');
+
+  // Handle file selection for imgslide
+  const handleDropzoneChangeImg = (files) => {
+    setImgFiles(files);
+    const selectedFile = files.length > 0 ? files[0] : null;
+    setFileImg(selectedFile);
+    setFilePreviewImg(selectedFile ? URL.createObjectURL(selectedFile) : null);
   };
 
-  const handleInfoChange = (e) => {
-    setInfo(e.target.value);
+  // Handle file selection for filept
+  const handleDropzoneChangeDoc = (files) => {
+    setDocFiles(files);
+    const selectedFile = files.length > 0 ? files[0] : null;
+    setFileDoc(selectedFile);
+    setFilePreviewDoc(selectedFile ? URL.createObjectURL(selectedFile) : null);
   };
 
-  const handleSubmit = async (e) => {
+  // Handle image form submission
+  const handleSubmitImg = async (e) => {
     e.preventDefault();
+    if (!fileImg) return alert("Please select an image");
 
     const formData = new FormData();
-    formData.append('file', file);
-    formData.append('info', info);
+    formData.append('imgFile', fileImg);
+    formData.append('detail', infoImg);
 
     try {
-      const response = await axios.post('http://localhost:5000/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+      const response = await axios.post('http://localhost:2222/imgslide', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
       });
-      console.log('File uploaded successfully:', response.data);
-
-      // Add the uploaded file to the list of uploaded files
-      setUploadedFiles([...uploadedFiles, response.data.data]);
+      setUploadedImages([...uploadedImages, response.data]);
+      setImgFiles([]); // Clear the DropzoneArea
     } catch (error) {
-      console.error('Error uploading file:', error);
+      console.error('Error uploading image:', error);
     }
 
-    // Clear the form
-    setFile(null);
-    setFilePreview(null);
-    setInfo('');
+    setFileImg(null);
+    setFilePreviewImg(null);
+    setInfoImg('');
   };
 
-  const fetchUploadedFiles = async () => {
+  // Handle document form submission
+  const handleSubmitDoc = async (e) => {
+    e.preventDefault();
+    if (!fileDoc) return alert("Please select a file");
+
+    const formData = new FormData();
+    formData.append('file', fileDoc);
+    formData.append('name', fileName);
+
     try {
-      const response = await axios.get('http://localhost:5000/files');
-      setUploadedFiles(response.data);
+      const response = await axios.post('http://localhost:2222/filept', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      setUploadedDocs([...uploadedDocs, response.data]);
+      setDocFiles([]); // Clear the DropzoneArea
     } catch (error) {
-      console.error('Error fetching files:', error);
+      console.error('Error uploading document:', error);
     }
+
+    setFileDoc(null);
+    setFilePreviewDoc(null);
+    setFileName('');
   };
 
+  // Fetch uploaded data on component mount
   useEffect(() => {
-    fetchUploadedFiles();
+    const fetchData = async () => {
+      try {
+        const [imgResponse, docResponse] = await Promise.all([
+          axios.get('http://localhost:2222/imgslide'),
+          axios.get('http://localhost:2222/filept'),
+        ]);
+        setUploadedImages(imgResponse.data);
+        setUploadedDocs(docResponse.data);
+        setImgFiles([]); // Clear imgFiles after fetching
+        setDocFiles([]); // Clear docFiles after fetching
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
     <Box sx={{ padding: '10% 10%' }}>
-      <div style={{ fontFamily: 'prompt', fontSize: '30px' }}>ImageSlider</div>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '20px' }}>
+      <Typography variant="h4" gutterBottom>Image and File Uploads</Typography>
+
+      {/* Form for imgslide */}
+      <form onSubmit={handleSubmitImg} style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '20px' }}>
+        <Typography variant="h5">Upload Image</Typography>
         <TextField
-          label="PicDetail"
+          label="Image Description"
           variant="outlined"
-          value={info}
-          onChange={handleInfoChange}
+          value={infoImg}
+          onChange={(e) => setInfoImg(e.target.value)}
           required
         />
         <DropzoneArea
           acceptedFiles={['image/*']}
           dropzoneText="Drag and drop an image here or click"
-          onChange={handleDropzoneChange}
+          onChange={handleDropzoneChangeImg}
+          initialFiles={imgFiles}
           filesLimit={1}
         />
         <Button type="submit" variant="contained" color="primary" startIcon={<CloudUploadIcon />}>
-          Submit
+          Submit Image
         </Button>
       </form>
 
-      {filePreview && (
-        <Card style={{ marginTop: '16px' }}>
-          <CardMedia component="img" alt="Uploaded File" height="140" image={filePreview} />
+      {/* Image Preview */}
+      {filePreviewImg && (
+        <Card sx={{ marginTop: 2 }}>
+          <CardMedia component="img" height="140" image={filePreviewImg} alt="Uploaded Image" />
           <CardContent>
-            <Typography variant="h6">Uploaded Image</Typography>
-            <Typography color="textSecondary">{info}</Typography>
+            <Typography>{infoImg}</Typography>
           </CardContent>
         </Card>
       )}
 
-      <div>
-        <Typography variant="h5" style={{ marginTop: '20px' }}>Uploaded Files:</Typography>
-        {uploadedFiles.map((file) => (
-          <Card key={file.id} style={{ marginTop: '16px' }}>
-            <CardMedia component="img" alt="Uploaded File" height="140" image={`http://localhost:5000/ImageSlide/${file.filePath}`} />
-            <CardContent>
-              <Typography variant="h6">Description: {file.description}</Typography>
-            </CardContent>
-          </Card>
+      {/* Form for filept */}
+      <form onSubmit={handleSubmitDoc} style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '20px' }}>
+        <Typography variant="h5">Upload File</Typography>
+        <TextField
+          label="File Name"
+          variant="outlined"
+          value={fileName}
+          onChange={(e) => setFileName(e.target.value)}
+          required
+        />
+        <DropzoneArea
+          acceptedFiles={['application/*']}
+          dropzoneText="Drag and drop a file here or click"
+          onChange={handleDropzoneChangeDoc}
+          initialFiles={docFiles}
+          filesLimit={1}
+        />
+        <Button type="submit" variant="contained" color="primary" startIcon={<CloudUploadIcon />}>
+          Submit File
+        </Button>
+      </form>
+
+      {/* Document Preview */}
+      {filePreviewDoc && (
+        <Card sx={{ marginTop: 2 }}>
+          <CardContent>
+            <Typography>{fileName}</Typography>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Uploaded Files Section */}
+      <Typography variant="h4" gutterBottom sx={{ marginTop: 4 }}>Uploaded Files</Typography>
+      <Grid container spacing={3}>
+        {uploadedImages.map((img) => (
+          <Grid item xs={12} sm={6} md={4} key={img.id}>
+            <Card>
+              <CardMedia component="img" height="200" image={`../../../BackendPT/uploads/${img.imgPath}`} alt={img.detail} />
+              <CardContent>
+                <Typography>{img.detail}</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         ))}
-      </div>
+        {uploadedDocs.map((doc) => (
+          <Grid item xs={12} sm={6} md={4} key={doc.id}>
+            <Card>
+              <CardContent>
+                <Typography>{doc.name}</Typography>
+                <a href={`../../../BackendPT/uploads/${doc.filePath}`} target="_blank" rel="noopener noreferrer">Download</a>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 };

@@ -1,0 +1,21 @@
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ImgSlide {
+  id        Int      @id @default(autoincrement())
+  detail    String
+  imgPath   String
+}
+
+model FilePT {
+  id        Int      @id @default(autoincrement())
+  name      String
+  filePath  String
+}

@@ -31,7 +31,7 @@ const MainPic = () => (
     >
       <Box
         sx={{
-          fontSize: '50px',
+          fontSize: { xs: '40px',md:'50px'},
           fontWeight: 'Regular',
           mb: '10px',
         }}
@@ -41,7 +41,7 @@ const MainPic = () => (
       </Box>
       <Box
         sx={{
-          fontSize: '34px',
+          fontSize: { xs: '28px',md:'34px'},
           fontWeight: 'Medium',
         }}
       >

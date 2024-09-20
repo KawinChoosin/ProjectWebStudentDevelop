@@ -3,7 +3,7 @@ import Navbar from '../../component/Navbar';
 import Footer from '../../component/Footer'; 
 import "../../component/text.css";
 
-function Visionmission() {
+function Aboutus() {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', backgroundColor: 'white' }}>
             <Navbar status={false} />
@@ -66,4 +66,4 @@ function Visionmission() {
       );
 }
 
-export default Visionmission
+export default Aboutus
