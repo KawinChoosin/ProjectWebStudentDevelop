@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import "./imgslide.css";
+import { Box, IconButton } from "@mui/material";
 
 interface CustomCarouselProps {
-  children: React.ReactNode[]; // Ensure an array of React elements as children
+  children: React.ReactElement<{ src: string }>[];
 }
 
 function CustomCarousel({ children }: CustomCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [slideDone, setSlideDone] = useState(true);
-  const [timeID, setTimeID] = useState<NodeJS.Timeout | null>(null); // Timeout ID type
+  const [timeID, setTimeID] = useState<number | null>(null); // Changed type to number
 
   useEffect(() => {
     if (slideDone) {
@@ -19,7 +19,6 @@ function CustomCarousel({ children }: CustomCarouselProps) {
       }, 5000);
       setTimeID(timeoutId);
     }
-    // Clean up the timeout when the component unmounts or when slideDone changes
     return () => {
       if (timeID) clearTimeout(timeID);
     };
@@ -47,56 +46,109 @@ function CustomCarousel({ children }: CustomCarouselProps) {
   };
 
   return (
-    <div
-      className="container__slider"
+    <Box
+      sx={{
+        position: "relative",
+        width: "100%",
+        height: { xs: "150px", sm: "300px", md: "400px", lg: "600px" },
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
+      }}
       onMouseEnter={AutoPlayStop}
       onMouseLeave={AutoPlayStart}
     >
-      {children.map((item, index) => (
-        <div
-          className={`slider__item slider__item-active-${activeIndex + 1}`}
-          key={index}
-        >
-          {item}
-        </div>
-      ))}
-
-      <div className="container__slider__links">
-        {children.map((item, index) => (
-          <button
-            key={index}
-            className={
-              activeIndex === index
-                ? "container__slider__links-small container__slider__links-small-active"
-                : "container__slider__links-small"
-            }
-            onClick={(e) => {
-              e.preventDefault();
-              setActiveIndex(index);
-            }}
-          ></button>
-        ))}
-      </div>
-
-      <button
-        className="slider__btn-next"
-        onClick={(e) => {
-          e.preventDefault();
-          slideNext();
+      <Box
+        sx={{
+          display: "flex",
+          transform: `translateX(-${activeIndex * 100}%)`,
+          transition: "transform 1s ease",
+          width: `${children.length * 100}%`,
         }}
       >
-        {">"}
-      </button>
-      <button
-        className="slider__btn-prev"
-        onClick={(e) => {
-          e.preventDefault();
-          slidePrev();
+        {children.map((item, index) => (
+          <Box
+            key={index}
+            sx={{
+              flex: "0 0 100%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {item && (
+              <Box
+                component="img"
+                src={item.props.src}
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
+            )}
+          </Box>
+        ))}
+      </Box>
+
+      <IconButton
+        onClick={slidePrev}
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: 0,
+          transform: "translateY(-50%)",
+          zIndex: 2,
+          color: "white",
+          fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem", lg: "2.5rem" },
         }}
       >
         {"<"}
-      </button>
-    </div>
+      </IconButton>
+      <IconButton
+        onClick={slideNext}
+        sx={{
+          position: "absolute",
+          top: "50%",
+          right: 0,
+          transform: "translateY(-50%)",
+          zIndex: 2,
+          color: "white",
+          fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem", lg: "2.5rem" },
+        }}
+      >
+        {">"}
+      </IconButton>
+
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "5%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        {children.map((_, index) => (
+          <IconButton
+            key={index}
+            onClick={() => setActiveIndex(index)}
+            size="small"
+            sx={{
+              margin: "0 4px",
+              backgroundColor: activeIndex === index ? "black" : "white",
+              border: "1px solid gray",
+              borderRadius: "50%",
+              transition: "background-color 0.3s ease",
+            }}
+          />
+        ))}
+      </Box>
+    </Box>
   );
 }
 

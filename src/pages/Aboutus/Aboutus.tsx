@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import Navbar from '../../component/Navbar';
 import Footer from '../../component/Footer'; 
 import "../../component/text.css";
@@ -11,13 +11,13 @@ function Aboutus() {
                 display: "flex",
                 flexDirection: "column",
                 width: "100%",
-                maxWidth: "1000px",
+                maxWidth:{xs:"300px",sm:"700px",md:"800px",lg:"1000px"},
                 marginTop: "125px",
                 padding: "20px",
                 boxSizing: "border-box",
                 color: "#333",
             }}>
-                <div className="text-topic" style={{marginTop:"10%"}} gutterBottom>
+                <div className="text-topic" style={{marginTop:"10%"}} >
                     วิสัยทัศน์/พันธกิจ
                 </div>
                 <Box sx={{ borderBottom: '3px solid #801111', marginBottom: '40px', width: '40%' }}></Box>

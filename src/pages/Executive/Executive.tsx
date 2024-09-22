@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Navbar from '../../component/Navbar';
 import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import img1 from './Pic_exe/1.jpg'; // Ensure this path is correct
@@ -55,7 +55,7 @@ const cardData = [
   },
 ];
 
-function CardComponent({ image, title, subtitle, contact }) {
+function CardComponent({ image, title, subtitle, contact }:any) {
   return (
     <Card sx={{ width: '540px', height: '680px', boxShadow: 'none', border: 'none' }}>
       <CardMedia

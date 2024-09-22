@@ -30,19 +30,27 @@ const images = [
 function ButtonService() {
   return (
     <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: '100%', // Full width
-      }}
-    >
+    sx={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+    zIndex: 20,
+    backgroundColor: 'white',
+  }}
+>
       <Box
         sx={{
           textAlign: 'center',
           marginTop: '40px',
           marginBottom: '20px',
-          fontSize: '40px',
+          fontSize: {
+            xs: '24px', // mobile phones
+            sm: '30px', // tablets
+            md: '35px', // desktops
+            lg: '40px', // large desktops
+            xl: '45px'  // larger screens
+          },
           fontWeight: 'Medium',
           color: '#b00020',
           fontFamily: 'Prompt',
@@ -60,33 +68,51 @@ function ButtonService() {
           },
         }}
       >
-        บริการนักศึกษา
+        บริการนักศึกษา 
       </Box>
 
       <Box
         sx={{
           display: 'grid',
           gridTemplateColumns: 'repeat(4, 1fr)', // Four columns
-          gap: '30px',
+          gap: {
+            xs: "15px 0px", // Vertical gap of 15px and horizontal gap of 30px
+            sm: "30px 0px", // Adjusted for tablets
+            md: "30px 0px", // For small desktops
+            lg: "40px 50px", // For larger desktops
+          },
           padding: '40px 0',
-          width: '100%', // Full width
-          maxWidth: '1100px', // Optional: limit max width for better presentation
-          '@media (max-width: 1000px)': { // Adjust this breakpoint as needed
+          width: '80%', // Full width
+          maxWidth: '1100px',
+          '@media (max-width: 700px)': { // Adjust this breakpoint as needed
+            gridTemplateColumns: 'repeat(3, 1fr)', // Change to 2 columns
+          }, // Optional: limit max width for better presentation
+          '@media (max-width: 600px)': { // Adjust this breakpoint as needed
             gridTemplateColumns: 'repeat(2, 1fr)', // Change to 2 columns
-          },
-          '@media (max-width: 600px)': { // Another breakpoint for smaller screens
-            gridTemplateColumns: '1fr', // Change to 1 column
-          },
+          }
+          // '@media (max-width: 600px)': { // Another breakpoint for smaller screens
+          //   gridTemplateColumns: '1fr', // Change to 1 column
+          // },
         }}
       >
         {images.map((image, index) => (
-          <Box key={index} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Box key={index} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',width:"100%",height:"100%",justifyItems:"center"}}>
             <Button
               variant="contained"
               href={image.path}
               sx={{
-                width: image.size, // Set width based on the image size
-                height: image.size, // Set height based on the image size
+                width: {
+                  xs: '100px', // Width for mobile
+                  sm: '120px', // Width for tablets
+                  md: '150px', // Width for small desktops
+                  lg: '220px', // Width for larger desktops
+                },
+                height: {
+                  xs: '100px', // Height for mobile
+                  sm: '120px', // Height for tablets
+                  md: '150px', // Height for small desktops
+                  lg: '220px', // Height for larger desktops
+                },
                 color: 'white',
                 fontFamily: 'Prompt',
                 display: 'flex',
@@ -95,9 +121,11 @@ function ButtonService() {
                 padding: 0,
                 position: 'relative',
                 overflow: 'hidden',
-                borderRadius: '100%',
-                '&:hover img': {
+                borderRadius: '200%',
+                '&:hover ': {
                   content: `url(${image.hoverSrc})`,
+                  boxShadow: '0 8px 20px rgba(187, 0, 32, 0.7)', // Glow effect
+                  transform: 'scale(1.1)', // Slightly enlarge on hover
                 },
               }}
             >
@@ -117,7 +145,12 @@ function ButtonService() {
               variant="body2"
               sx={{
                 marginTop: '20px',
-                fontSize: "18px",
+                fontSize:  {
+                  xs: "12px", // Width for mobile
+                  sm: "14px", // Width for tablets
+                  md: "18px", // Width for small desktops
+                  lg: "22px", // Width for larger desktops
+                },
                 fontWeight:700,
                 color: '#5B171E',
                 fontFamily: 'Prompt',

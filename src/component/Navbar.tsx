@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, Button, IconButton, Menu, MenuItem } from '@mui/material';
+import { Box, Button, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -160,7 +160,7 @@ function Navbar({ status }: NavbarProps) {
         top: 0,
         left: 0,
         boxSizing: 'border-box',
-        zIndex: 20,
+        zIndex: 2000,
       }}
     >
       <Button component="a" href="/" sx={{ height: '100%', cursor: 'pointer' }}>

@@ -1,8 +1,8 @@
 // CardComponent.js
-import React from 'react';
-import { Box, Card, CardContent, CardMedia } from '@mui/material';
 
-function CardComponent({ image, title, subtitle, contact }) {
+import {  Card, CardContent, CardMedia,Typography } from '@mui/material';
+
+function CardComponent({ image, title, subtitle, contact }:any) {
   return (
     <Card sx={{ width: '100%', maxWidth: '540px', boxShadow: 'none', margin: '0 auto' }}>
       <CardMedia

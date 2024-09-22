@@ -1,11 +1,18 @@
-import React from 'react'
+
 import { Box } from '@mui/material';
 import ImageSlider from '../../component/imgslide';
 
-function ActivityImage({slides}) {
+function ActivityImage({slides}:any) {
   return (
-    <>
     <Box
+      sx={{
+        backgroundColor: 'white', // Set the background color to white
+        padding: '20px', // Add padding if needed
+        position: 'relative',
+        zIndex: 21, // Ensure it's behind other elements if needed
+      }}
+    >
+      <Box
         sx={{
           textAlign: 'center',
           marginTop: '40px',
@@ -13,11 +20,18 @@ function ActivityImage({slides}) {
           height: '100px',
           width: '100%',
           position: 'relative',
+          zIndex: 21,
         }}
       >
         <Box
           sx={{
-            fontSize: '40px',
+            fontSize: {
+              xs: '24px', // mobile phones
+              sm: '30px', // tablets
+              md: '36px', // desktops
+              lg: '40px', // large desktops
+              xl: '45px'  // larger screens
+            },
             fontWeight: 'Medium',
             color: '#b00020', // Red text color
             fontFamily: 'Prompt',
@@ -40,29 +54,48 @@ function ActivityImage({slides}) {
         </Box>
       </Box>
 
-      <Box sx={{ display: 'grid', alignItems: 'center', justifyContent: 'center' }}>
+      <Box sx={{ display: 'grid', alignItems: 'center', justifyContent: 'center', zIndex: 21 }}>
         <ImageSlider>
-          {slides.map((image, index) => (
-            <img key={index} src={image.url} style={{ objectFit: 'cover', height: '500px' }} />
+          {slides.map((image:any, index:number) => (
+            <Box
+            component="img"
+            key={index}
+            src={image.url}
+            alt={image.alt} // Always include alt text for accessibility
+            sx={{
+              objectFit: 'cover',
+               width: '100%', // Adjust width if necessary, this makes the image responsive
+            }}
+          />
           ))}
         </ImageSlider>
       </Box>
 
-      <Box sx={{ textAlign: 'center', marginTop: '10px', marginBottom: '10px', height: '100px', width: '100%', position: 'relative' }}>
+      <Box
+        sx={{
+          textAlign: 'center',
+          marginTop: '10px',
+          marginBottom: '10px',
+          height: '100px',
+          width: '100%',
+          position: 'relative',
+          zIndex: 21,
+        }}
+      >
         <Box
           sx={{
             position: 'absolute',
             bottom: '50%',
             left: '50%',
             width: '30%',
-            height: '5px',
+            height: '3.5px',
             backgroundColor: '#b00020',
             transform: 'translateX(-50%)', // Center horizontally
           }}
         />
       </Box>
-      </>
-  )
+    </Box>
+  );
 }
 
-export default ActivityImage
+export default ActivityImage;

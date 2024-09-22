@@ -4,6 +4,7 @@ import Mainpic from './pages/Homepage/mainpic';
 import ButtonService from './pages/Homepage/ButtonService';
 import ActivityImage from './pages/Homepage/ActivityImage'
 import News from './pages/Homepage/News';
+import { Box } from '@mui/material';
 
 const App = () => {
   const slides = [
@@ -20,13 +21,12 @@ const App = () => {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
-        maxWidth: '100%', // Full width of the viewport
-        padding: '0', // Remove any default padding
-        margin: '0',  // Remove any default margin
+    
       }}
     >
       <Navbar status={true} />
       <Mainpic />
+      <Box sx={{height:"800px"}}></Box>
       <ButtonService />
       <ActivityImage slides={slides} />
       <News />

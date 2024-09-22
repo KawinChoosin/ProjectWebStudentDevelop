@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import Englogo from '../component/eng_logo.png';
 
@@ -11,21 +11,19 @@ function Footer() {
     }, []);
 
     return (
-      <div>
+      <Box>
         <div
           className="fb-page"
           data-href="https://www.facebook.com/StudentDevelopmentENG"
           data-tabs="timeline"
-          data-width="380px"
-          data-height="400px"
           data-small-header="false"
           data-adapt-container-width="true"
           data-hide-cover="false"
-          data-show-facepile="true"
+          data-show-facepile="false"
           style={{
-            padding: '0 20px',
-            width: '380px', // Set a fixed width
-            margin: '0 auto', // Center the block
+            width: '380px',
+            height: '200px', // Default height
+            maxWidth: '100%', // Allow it to scale within its container
           }}
         >
           <blockquote
@@ -35,7 +33,32 @@ function Footer() {
             <a href="https://www.facebook.com/StudentDevelopmentENG">งานบริการนักศึกษา</a>
           </blockquote>
         </div>
-      </div>
+
+        <style>
+          {`
+            @media (max-width: 600px) {
+              .fb-page {
+                width: 100% !important;
+                height: 250px !important; /* Adjust for smaller screens */
+              }
+            }
+
+            @media (min-width: 601px) and (max-width: 960px) {
+              .fb-page {
+                width: 100% !important;
+                height: 300px !important; /* Adjust for medium screens */
+              }
+            }
+
+            @media (min-width: 961px) {
+              .fb-page {
+                width: 380px !important;
+                height: 400px !important; /* Default for larger screens */
+              }
+            }
+          `}
+        </style>
+      </Box>
     );
   };
 
@@ -43,40 +66,44 @@ function Footer() {
     <Box
       sx={{
         width: '100%',
-        height: 'auto', // Allow flexibility
+        height: 'auto',
         background: 'linear-gradient(to bottom, #C33443 0%, #5D1920 100%)',
         boxSizing: 'border-box',
         padding: '20px',
         position: 'relative',
         display: 'flex',
-        flexDirection: { xs: 'column', md: 'row' }, // Stack on small screens
+        flexDirection: { xs: 'column', md: 'row' },
         alignItems: 'flex-start',
         justifyContent: 'space-between',
         zIndex: 10,
-    
       }}
     >
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
               width: '100%',
-              fontSize: { xs: '18px', md: '18px' },
+              fontSize: { xs: '14px', sm: '18px', md: '18px', lg: '20px' },
               fontFamily: 'Prompt',
               fontWeight: 'light',
               color: 'white',
               padding: '0 5px',
               boxSizing: 'border-box',
-              lineHeight: { xs: '30px', md: '40px' },
+              lineHeight: { xs: '30px', sm: '35px', md: '40px', lg: '40px' },
             }}
           >
             <Box
               component="img"
               src={Englogo}
               alt="LogoFoot"
-              sx={{ maxHeight: '100px', cursor: 'pointer', maxWidth: "380px" }}
+              sx={{
+                maxHeight: { xs: '70px', sm: '90px', md: '100px', lg: '120px' },
+                maxWidth: { xs: '240px', sm: '300px', md: '300px', lg: '360px' },
+                cursor: 'pointer',
+                marginBottom: '10px',
+              }}
             />
             <Box sx={{ padding: '0 15px' }}>
               งานพัฒนาคุณภาพนักศึกษา<br />
@@ -86,33 +113,44 @@ function Footer() {
             </Box>
           </Box>
         </Grid>
-        
-        <Grid item xs={12} md={6} sx={{ paddingRight: { xs: '0', md: '40px' } }}>
-          <Box sx={{ display: 'flex', justifyContent: { xs: 'flex-start', md: 'flex-end' } }}>
+
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{ paddingRight: { xs: '0', md: '40px' } }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: { xs: 'center', sm: 'flex-start', md: 'flex-end' },
+              ml:{sm:"20px"}
+            }}
+          >
             <FacebookPageEmbed />
           </Box>
         </Grid>
 
-        <Box sx={{ display: "flex", flexDirection: "column", marginTop: '30px' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '30px' }}>
           <Box
             sx={{
               maxWidth: '100%',
               height: '2px',
               backgroundColor: 'white',
-              marginBottom: "10px",
-              marginLeft: "7%",
+              marginBottom: '10px',
+              marginLeft: '7%',
               padding: '0 5px',
             }}
           />
           <Typography
             sx={{
-              width: "100%",
+              width: '100%',
               color: 'white',
-              fontSize: { xs: '14px', md: '16px' },
+              fontSize: { xs: '10px', sm: '14px', md: '16px', lg: '18px' },
               fontFamily: 'Prompt',
               fontWeight: 'light',
               textAlign: 'left',
-              marginLeft: "7%",
+              marginLeft: '7%',
               padding: '0 5px',
             }}
           >

@@ -1,13 +1,15 @@
-import React from 'react';
+
 import { Box } from '@mui/material';
 import mainpic from '../../pic/mainpic.png';
 
 const MainPic = () => (
   <Box
     sx={{
-      position: 'relative',
-      width: '100%',
+      position: 'fixed', // Make the banner fixed to the top
+      top: 0, 
+      width: '100%', 
       height: '880px',
+      zIndex: 10, // Ensure the banner stays above other content
     }}
   >
     <Box
@@ -31,7 +33,13 @@ const MainPic = () => (
     >
       <Box
         sx={{
-          fontSize: { xs: '40px',md:'50px'},
+          fontSize: {
+            xs: '20px', // mobile phones
+            sm: '30px', // tablets
+            md: '40px', // desktops
+            lg: '50px', // large desktops
+            xl: '60px'  // larger screens
+          },
           fontWeight: 'Regular',
           mb: '10px',
         }}
@@ -41,7 +49,13 @@ const MainPic = () => (
       </Box>
       <Box
         sx={{
-          fontSize: { xs: '28px',md:'34px'},
+          fontSize: {
+            xs: '16px', // mobile phones
+            sm: '20px', // tablets
+            md: '26px', // desktops
+            lg: '30px', // large desktops
+            xl: '38px'  // larger screens
+          },
           fontWeight: 'Medium',
         }}
       >
