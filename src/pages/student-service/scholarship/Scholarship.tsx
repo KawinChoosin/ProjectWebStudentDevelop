@@ -1,4 +1,4 @@
-import { Box,Card,CardMedia,CardContent,Grid} from '@mui/material';
+import { Box,Card,CardMedia,CardContent} from '@mui/material';
 import Navbar from '../../../component/Navbar';
 import Footer from '../../../component/Footer'; 
 import "../../../component/text.css";
@@ -44,7 +44,7 @@ function Scholarship() {
                     justifyContent: 'space-between',  // Ensures cards are aligned left and right
                     width: '100%', // Full width for proper spacing
                     gap:'20px',
-                    justifyContent:'center',
+                    // justifyContent:'center',
                     marginBottom:"20px"
                     }}
                 > 
@@ -102,7 +102,7 @@ function Scholarship() {
                     justifyContent: 'space-between',  // Ensures cards are aligned left and right
                     width: '100%', // Full width for proper spacing
                     gap:'20px',
-                    justifyContent:'center',
+                    // justifyContent:'center',
                     marginBottom:"20px"
                     }}
                 > 
@@ -160,7 +160,7 @@ function Scholarship() {
                     justifyContent: 'space-between',  // Ensures cards are aligned left and right
                     width: '100%', // Full width for proper spacing
                     gap:'20px',
-                    justifyContent:'center',
+                    // justifyContent:'center',
                     marginBottom:"20px"
                     }}
                 > 
@@ -218,7 +218,7 @@ function Scholarship() {
                     justifyContent: 'space-between',  // Ensures cards are aligned left and right
                     width: '100%', // Full width for proper spacing
                     gap:'20px',
-                    justifyContent:'center',
+                    // justifyContent:'center',
                     marginBottom:"20px"
                     }}
                 > 
