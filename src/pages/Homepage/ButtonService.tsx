@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import IC1 from "./PicIcon/1.png";
 import IC2 from "./PicIcon/2.png";
@@ -32,7 +32,7 @@ const images = [
 
 
 function ButtonService() {
-  
+
   useEffect(() => {
     images.forEach(image => {
       const img = new Image();
