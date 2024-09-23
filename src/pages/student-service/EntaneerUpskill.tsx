@@ -12,7 +12,7 @@ function EntaneerUpskill() {
                   display: "flex",
                   flexDirection: "column",
                   width: "100%",
-                  maxWidth: "1000px",
+                  maxWidth: { xs: "370px", sm: "700px", md: "800px", lg: "1000px" },
                   marginTop: "125px",
                   padding: "20px",
                   boxSizing: "border-box",

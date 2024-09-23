@@ -55,20 +55,19 @@ const cardData = [
   },
 ];
 
-function CardComponent({ image, title, subtitle, contact }:any) {
+function CardComponent({ image, title, subtitle, contact }: any) {
   return (
-    <Card sx={{ width: '540px', height: '680px', boxShadow: 'none', border: 'none' }}>
+    <Card sx={{ width: '80%', maxWidth: '450px', boxShadow: 'none', border: 'none' }}>
       <CardMedia
         component="img"
-        height="470"
         image={image}
         alt={title}
-        sx={{ width: '450px', margin: '0 auto', boxShadow: '5', border: '2px' }}
+        sx={{ width: '100%', maxWidth: { xs: "310px", sm: "400px", md: "380px", lg: "470px" }, margin: '0 auto', boxShadow: 5,objectFit:'cover' ,height:{ xs: "340px", sm: "400px", md: "470px", lg: "470px" }}}
       />
       <CardContent>
         <Typography
           sx={{
-            fontSize: '20px',
+            fontSize: { xs: "13px", sm: "16px", md: "18px", lg: "20px" },
             fontWeight: 'medium',
             fontFamily: 'Prompt',
             textAlign: 'center',
@@ -80,7 +79,7 @@ function CardComponent({ image, title, subtitle, contact }:any) {
         </Typography>
         <Typography
           sx={{
-            fontSize: '16px',
+            fontSize: { xs: "12px", sm: "14px", md: "16px", lg: "16px" },
             fontWeight: 'medium',
             fontFamily: 'Prompt',
             textAlign: 'center',
@@ -92,7 +91,7 @@ function CardComponent({ image, title, subtitle, contact }:any) {
         </Typography>
         <Typography
           sx={{
-            fontSize: '16px',
+            fontSize: { xs: "12px", sm: "14px", md: "16px", lg: "16px" },
             fontWeight: 'ExtraLight',
             fontFamily: 'Prompt',
             textAlign: 'center',
@@ -122,7 +121,7 @@ function Executive() {
       <Box
         sx={{
           textAlign: 'center',
-          marginTop: '225px',
+          marginTop: { xs: '150px', md: '225px' }, // Responsive top margin
           marginBottom: '20px',
           height: '100px',
           width: '100%',
@@ -131,7 +130,7 @@ function Executive() {
       >
         <Box
           sx={{
-            fontSize: '40px',
+            fontSize: { xs: "28px", sm: "32px", md: "36px", lg: "40px" },
             fontWeight: 'Medium',
             color: '#b00020',
             fontFamily: 'Prompt',
@@ -157,10 +156,10 @@ function Executive() {
       <Box
         sx={{
           display: 'flex',
-          flexWrap: 'wrap', // Allows wrapping of cards
+          flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: '20px',
-          width: '100%',
+          gap: { xs: "0px", sm: "0px", md: "0px", lg: "30px" },
+          padding: '0 20px', // Padding for smaller screens
         }}
       >
         {cardData.slice(0, 2).map((data, index) => (
@@ -186,7 +185,7 @@ function Executive() {
       >
         <Box
           sx={{
-            fontSize: '40px',
+            fontSize: { xs: "28px", sm: "32px", md: "36px", lg: "40px" },
             fontWeight: 'Medium',
             color: '#b00020',
             fontFamily: 'Prompt',
@@ -212,10 +211,10 @@ function Executive() {
       <Box
         sx={{
           display: 'flex',
-          flexWrap: 'wrap', // Allows wrapping of cards
+          flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: '20px',
-          width: '100%',
+          gap: { xs: "0px", sm: "0px", md: "0px", lg: "30px" },
+          padding: '0 20px',
         }}
       >
         {cardData.slice(2, 3).map((data, index) => (
@@ -232,10 +231,10 @@ function Executive() {
       <Box
         sx={{
           display: 'flex',
-          flexWrap: 'wrap', // Allows wrapping of cards
+          flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: '20px',
-          width: '100%',
+          gap: { xs: "0px", sm: "0px", md: "0px", lg: "30px" },
+          padding: '0 20px',
           marginTop: '20px',
         }}
       >
@@ -253,10 +252,10 @@ function Executive() {
       <Box
         sx={{
           display: 'flex',
-          flexWrap: 'wrap', // Allows wrapping of cards
+          flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: '20px',
-          width: '100%',
+          gap: { xs: "0px", sm: "0px", md: "0px", lg: "30px" },
+          padding: '0 20px',
           marginTop: '20px',
           marginBottom: '40px',
         }}
@@ -272,19 +271,6 @@ function Executive() {
         ))}
       </Box>
 
-      <Box sx={{ textAlign: 'center', marginTop: '10px', marginBottom: '10px', height: '100px', width: '100%', position: 'relative' }}>
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: '50%',
-            left: '50%',
-            width: '30%',
-            height: '5px',
-            backgroundColor: '#b00020',
-            transform: 'translateX(-50%)', // Center horizontally
-          }}
-        />
-      </Box>
       <Footer />
     </div>
   );

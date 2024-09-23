@@ -12,7 +12,7 @@ import StudentHealthWelfare from './pages/student-service/EntaneerMind';
 import Welfare from './pages/student-service/Welfare';
 import EntaneerUpskill from './pages/student-service/EntaneerUpskill';
 import Reserve from './pages/student-service/ReservePlace';
-import Certification from './pages/student-service/Certification';
+import Certification from './pages/student-service/cerfication/Certification';
 import CareerDay from './pages/EJS/Careerday';
 import JobSearch from './pages/EJS/FindJob';
 import ExternalJobs from './pages/EJS/GetJob';

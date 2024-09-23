@@ -1,14 +1,14 @@
 .text-topic {
-    font-size: clamp(16px, 1.5vw + 0.8rem, 30px); /* Responsive, min 20px, max 30px */
-    font-weight: regular; 
+    font-size: clamp(16px, 2vw + 0.8rem, 30px); /* Responsive, min 20px, max 30px */
+    font-weight: 600; 
     color: #801111;
     font-family: 'Prompt'; 
-    margin-bottom: 20px; /* Add some space after the title */
+    margin-bottom: 10px; /* Add some space after the title */
     
 }
 
 .text-detail {
-    font-size: clamp(12px, 1vw + 0.5rem, 20px); /* Responsive, min 14px, max 20px */
+    font-size: clamp(12px, 2vw + 0.5rem, 20px); /* Responsive, min 14px, max 20px */
     font-weight: light; 
     color: #000000;
     font-family: 'Prompt';
@@ -18,7 +18,7 @@
 }   
 
 .text-detail-indent {
-    font-size: clamp(12px, 1vw + 0.5rem, 20px); /* Responsive, min 14px, max 20px */
+    font-size: clamp(12px, 2vw + 0.5rem, 20px); /* Responsive, min 14px, max 20px */
     font-weight: light; 
     color: #000000;
     font-family: 'Prompt';
@@ -28,8 +28,9 @@
 }
 
 .text-bold {
-    font-size: clamp(18px, 1vw + 0.5rem, 22px); /* Responsive, min 18px, max 22px */
-    font-weight: regular;
+    
+    font-size: clamp(18px, 2vw + 0.5rem, 22px); /* Responsive, min 18px, max 22px */
+    font-weight: 600;
     color: #801111;
     font-family: 'Prompt';
     margin-top: 20px; /* Space before section titles */
