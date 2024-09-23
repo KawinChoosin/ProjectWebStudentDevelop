@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import IC1 from "./PicIcon/1.png";
 import IC2 from "./PicIcon/2.png";
@@ -16,6 +17,7 @@ import IC66 from "./PicIcon/66.png";
 import IC77 from "./PicIcon/77.png";
 import IC88 from "./PicIcon/88.png";
 
+
 const images = [
   { src: IC1, alt: 'Image 1', text: 'งานทุนการศึกษา', hoverSrc: IC11, size: '200px',path:"/scholarship"},
   { src: IC2, alt: 'Image 2', text: 'งานส่งเสริมกิจกรรมนักศึกษา', hoverSrc: IC22, size: '200px' ,path:"/activities" },
@@ -27,7 +29,20 @@ const images = [
   { src: IC8, alt: 'Image 8', text: 'Entaneer Upskill', hoverSrc: IC88, size: '200px',path:"/entaneer-upskill"},
 ];
 
+
+
 function ButtonService() {
+  
+  useEffect(() => {
+    images.forEach(image => {
+      const img = new Image();
+      img.src = image.hoverSrc;
+      img.onload = () => console.log(`${image.alt} hover image preloaded`);
+      img.onerror = (error) => console.error(`Error loading ${image.alt} hover image:`, error);
+    });
+  }, []); 
+
+
   return (
     <Box
     sx={{
