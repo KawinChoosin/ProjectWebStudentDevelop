@@ -1,125 +1,147 @@
-import { Box, Card } from '@mui/material';
-import { FacebookEmbed } from 'react-social-media-embed';
+import { Box, Grid } from '@mui/material';
+import { useEffect } from 'react';
 
-const FacebookPosts = ({ postUrls }: any) => {
- 
+// Component for embedding a single Facebook page
+const FacebookPageEmbed = ({ pageUrl }:any) => {
+  useEffect(() => {
+    if (window.FB) {
+      window.FB.XFBML.parse();
+    }
+  }, []);
 
   return (
     <Box
       sx={{
-        zIndex: 22,
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '30px',
-        justifyContent: 'center',
-        margin: '20px auto',
-        marginBottom: '100px',
-        '@media (max-width: 600px)': { // Adjust this breakpoint as needed
-          gridTemplateColumns: 'repeat(2, 1fr)', // Change to 2 columns
-        },
-        '@media (max-width: 500px)': { // Another breakpoint for smaller screens
-          gridTemplateColumns: '1fr', // Change to 1 column
-        },
+        // flexGrow: 1,
+        // flexShrink: 1,
+        // maxWidth: '360px', // Ensure maximum size for larger screens
+        // width: '100%',     // Allow full width for smaller screens
+        // margin: '0 auto',  // Center horizontally within its container
       }}
     >
-      {postUrls.map((url: any, index: any) => (
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          key={index}
-          style={{ textDecoration: 'none' }}
+      <div
+        className="fb-page"
+        data-href={pageUrl}
+        data-tabs="timeline"
+        data-small-header="false"
+        data-adapt-container-width="true"
+        data-hide-cover="false"
+        data-show-facepile="false"
+        style={{
+          width: '100%',
+          height: '200px', // Default height
+        }}
+      >
+        <blockquote
+          cite={pageUrl}
+          className="fb-xfbml-parse-ignore"
         >
-          <Card
-            sx={{
-              maxWidth: {
-                xs: '300px', // mobile phones
-                sm: '200px', // tablets
-                md: '250px', // desktops
-                lg: '400px', // large desktops
-              },
-              boxShadow: 8,
-              maxHeight: {
-                xs: '200px', // mobile phones
-                sm: '300px', // tablets
-                md: '300px', // desktops
-                lg: '500px', // large desktops
-              },
-              userSelect: 'none',
-              pointerEvents: 'none', // Disable pointer events on the card itself
-              '& *': {
-                pointerEvents: 'auto', // Allow pointer events on embedded content
-              },
-              cursor: 'pointer', // Make the entire card appear clickable
-              ':hover': {
-                boxShadow: 12, // Add a hover effect for better UX
-              },
-            }}
-          >
-            {/* Responsive FacebookEmbed width and height */}
-            <FacebookEmbed
-              url={url}
-              linkText={url}
-            />
-          </Card>
-        </a>
-      ))}
+          <a href={pageUrl}>Facebook Page</a>
+        </blockquote>
+      </div>
+
+      <style>
+        {`
+          @media (max-width: 600px) {
+            .fb-page {
+              width: 360px !important;
+              height: 250px !important; /* Adjust for smaller screens */
+            }
+          }
+
+          @media (min-width: 601px) and (max-width: 960px) {
+            .fb-page {
+              width: 360px !important;
+              height: 300px !important; /* Adjust for medium screens */
+            }
+          }
+
+          @media (min-width: 961px) {
+            .fb-page {
+              width: 360px !important;
+              height: 400px !important; /* Default for larger screens */
+            }
+          }
+        `}
+      </style>
     </Box>
   );
 };
 
+// Main component for displaying news and multiple Facebook pages
 const News = () => {
-  const postUrls = [
-    'https://www.facebook.com/photo.php?fbid=909915987835075&set=a.546737444152933&type=3&ref=embed_post',
-    'https://www.facebook.com/photo/?fbid=953633139896543&set=a.534792155113979',
-    'https://www.facebook.com/photo?fbid=955424436384080&set=a.534792155113979',
+  // Array of Facebook page URLs
+  const facebookPages = [
+    'https://www.facebook.com/StudentDevelopmentENG',
+    'https://www.facebook.com/ScholarshipsENG',
+    'https://www.facebook.com/@EntaneerMindFriendCMU'
   ];
 
   return (
-    <>
+    <Box
+      sx={{
+        zIndex: 21,
+        padding: '20px',
+        fontFamily: 'Prompt',
+        backgroundColor: 'white',
+      }}
+    >
       <Box
         sx={{
-          zIndex: 21,
-          padding: '20px',
+          marginLeft: '10%',
+          fontWeight: 'Medium',
+          color: '#b00020',
+          marginBottom: '20px',
+          position: 'relative',
+          display: 'inline-block',
           fontFamily: 'Prompt',
-          backgroundColor: "white",
+          fontSize: {
+            xs: '24px', // mobile phones
+            sm: '30px', // tablets
+            md: '35px', // desktops
+            lg: '40px', // large desktops
+            xl: '45px', // larger screens
+          },
+          '&:after': {
+            content: '""',
+            display: 'block',
+            width: '125%',
+            height: '3px',
+            backgroundColor: '#b00020',
+            marginTop: '5px',
+            position: 'absolute',
+            left: '0',
+          },
         }}
       >
-        <Box
-          sx={{
-            marginLeft: '10%',
-            fontWeight: 'Medium',
-            color: '#b00020',
-            marginBottom: '20px',
-            position: 'relative',
-            display: 'inline-block',
-            fontFamily: 'Prompt',
-            fontSize: {
-              xs: '24px', // mobile phones
-              sm: '30px', // tablets
-              md: '35px', // desktops
-              lg: '40px', // large desktops
-              xl: '45px'  // larger screens
-            },
-            '&:after': {
-              content: '""',
-              display: 'block',
-              width: '125%',
-              height: '3px',
-              backgroundColor: '#b00020',
-              marginTop: '5px',
-              position: 'absolute',
-              left: '0',
-            },
-          }}
-        >
-          ข่าวประชาสัมพันธ์
-        </Box>
-        <Box sx={{ display: "flex" }}>
-          <FacebookPosts postUrls={postUrls} />
-        </Box>
+        ข่าวประชาสัมพันธ์
       </Box>
-    </>
+
+      {/* Grid container for responsive layout */}
+      <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
+        {facebookPages.map((pageUrl, index) => (
+          <Grid
+            item
+            xs={12} // 1 column on extra-small screens
+            sm={6}  // 2 columns on small screens
+            md={3}  // 3 columns on medium and larger screens
+            key={index}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexGrow: 1,    // Allow grid items to grow
+              flexShrink: 1,  // Allow grid items to shrink
+              maxWidth: '360px', // Limit the max width of the embeds
+              width: '100%', // Fill the available space
+              margin: '0 auto', // Ensure the grid item is centered
+            }}
+          >
+            <FacebookPageEmbed pageUrl={pageUrl} />
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   );
 };
 

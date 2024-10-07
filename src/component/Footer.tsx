@@ -1,66 +1,66 @@
-import  { useEffect } from 'react';
+
 import { Box, Grid, Typography } from '@mui/material';
 import Englogo from '../component/eng_logo.png';
 
 function Footer() {
-  const FacebookPageEmbed = () => {
-    useEffect(() => {
-      if (window.FB) {
-        window.FB.XFBML.parse();
-      }
-    }, []);
+  // const FacebookPageEmbed = () => {
+  //   useEffect(() => {
+  //     if (window.FB) {
+  //       window.FB.XFBML.parse();
+  //     }
+  //   }, []);
 
-    return (
-      <Box>
-        <div
-          className="fb-page"
-          data-href="https://www.facebook.com/StudentDevelopmentENG"
-          data-tabs="timeline"
-          data-small-header="false"
-          data-adapt-container-width="true"
-          data-hide-cover="false"
-          data-show-facepile="false"
-          style={{
-            width: '380px',
-            height: '200px', // Default height
-            maxWidth: '100%', // Allow it to scale within its container
-          }}
-        >
-          <blockquote
-            cite="https://www.facebook.com/StudentDevelopmentENG"
-            className="fb-xfbml-parse-ignore"
-          >
-            <a href="https://www.facebook.com/StudentDevelopmentENG">งานบริการนักศึกษา</a>
-          </blockquote>
-        </div>
+  //   return (
+  //     <Box>
+  //       <div
+  //         className="fb-page"
+  //         data-href="https://www.facebook.com/StudentDevelopmentENG"
+  //         data-tabs="timeline"
+  //         data-small-header="false"
+  //         data-adapt-container-width="true"
+  //         data-hide-cover="false"
+  //         data-show-facepile="false"
+  //         style={{
+  //           width: '380px',
+  //           height: '200px', // Default height
+  //           maxWidth: '100%', // Allow it to scale within its container
+  //         }}
+  //       >
+  //         <blockquote
+  //           cite="https://www.facebook.com/StudentDevelopmentENG"
+  //           className="fb-xfbml-parse-ignore"
+  //         >
+  //           <a href="https://www.facebook.com/StudentDevelopmentENG">งานบริการนักศึกษา</a>
+  //         </blockquote>
+  //       </div>
 
-        <style>
-          {`
-            @media (max-width: 600px) {
-              .fb-page {
-                width: 100% !important;
-                height: 250px !important; /* Adjust for smaller screens */
-              }
-            }
+  //       <style>
+  //         {`
+  //           @media (max-width: 600px) {
+  //             .fb-page {
+  //               width: 100% !important;
+  //               height: 250px !important; /* Adjust for smaller screens */
+  //             }
+  //           }
 
-            @media (min-width: 601px) and (max-width: 960px) {
-              .fb-page {
-                width: 100% !important;
-                height: 300px !important; /* Adjust for medium screens */
-              }
-            }
+  //           @media (min-width: 601px) and (max-width: 960px) {
+  //             .fb-page {
+  //               width: 100% !important;
+  //               height: 300px !important; /* Adjust for medium screens */
+  //             }
+  //           }
 
-            @media (min-width: 961px) {
-              .fb-page {
-                width: 380px !important;
-                height: 400px !important; /* Default for larger screens */
-              }
-            }
-          `}
-        </style>
-      </Box>
-    );
-  };
+  //           @media (min-width: 961px) {
+  //             .fb-page {
+  //               width: 380px !important;
+  //               height: 400px !important; /* Default for larger screens */
+  //             }
+  //           }
+  //         `}
+  //       </style>
+  //     </Box>
+  //   );
+  // };
 
   return (
     <Box
@@ -79,7 +79,7 @@ function Footer() {
       }}
     >
       <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={12}>
           <Box
             sx={{
               display: 'flex',
@@ -114,7 +114,7 @@ function Footer() {
           </Box>
         </Grid>
 
-        <Grid
+        {/* <Grid
           item
           xs={12}
           md={6}
@@ -129,7 +129,7 @@ function Footer() {
           >
             <FacebookPageEmbed />
           </Box>
-        </Grid>
+        </Grid> */}
 
         <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '30px' }}>
           <Box
