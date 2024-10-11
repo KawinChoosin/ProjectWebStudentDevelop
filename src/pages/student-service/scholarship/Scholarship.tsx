@@ -1,25 +1,28 @@
-import { Box, Card, CardMedia, CardContent,Grid } from '@mui/material';
+import { Box, Card, CardMedia,Grid } from '@mui/material';
 import Navbar from '../../../component/Navbar';
 import Footer from '../../../component/Footer'; 
 import "../../../component/text.css";
-import pic1 from "./pic/image.png";
-import pic2 from "./pic/2.png";
-import pic3 from "./pic/3.png";
-import pic4 from "./pic/4.png";
-import pic5 from "./pic/5.png";
-import pic6 from "./pic/6.png";
-import pic7 from "./pic/7.png";
-import pic8 from "./pic/8.png";
-import pic9 from "./pic/9.png";
+import pic1 from "./pic/main.png";
+import pic3 from "./pic/ทุนเรียนดี.png";
+import pic7 from "./pic/ทุนกิจกรรม.png";
+import pic2 from "./pic/ทุนขัดสน.png";
+import pic6 from "./pic/ทุนฉุกเฉิน.png";
+import pic5 from "./pic/ทุนทำงาน.png";
+import pic8 from "./pic/ทุนประกวดผลงานทางวิชาการ.png";
+import pic4 from "./pic/ทุนวิศวฯ ปัญญาเลิศ.png";
+import pic9 from "./pic/ทุนปโท.png";
+import pic10 from "./pic/contact.png";
+
+
 
 const ScholarshipCard = ({ image, title }: { image: string; title: string; }) => (
     <Card sx={{ height: {lg:'550px',md:'450px',sm:'420px'} }}>
         <CardMedia component="img" image={image} alt={title} />
-        <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+        {/* <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <div className="text-detail" style={{ color: '#000000', fontFamily: 'Prompt', marginBottom: '6px',textAlign: 'center' }}>
                 {title}
             </div>
-        </CardContent>
+        </CardContent> */}
     </Card>
 );
 
@@ -47,9 +50,10 @@ function Scholarship() {
                         { image: pic6, title: 'ทุนการศึกษาประเภทฉุกเฉิน' },
                         { image: pic7, title: 'ทุนการศึกษาประเภทกิจกรรมวิชาการ' },
                         { image: pic8, title: 'ทุนการศึกษาประเภทผลงานประกวด' },
-                        { image: pic9, title: 'ทุนการศึกษาสำหรับผู้มีผลการเรียนดีเยี่ยม' },
+                        { image: pic9, title: 'ทุนการศึกษาสำหรับผู้มีผลการเรียนดีเยี่ยมเพื่อศึกษาต่อปริญญาโท' },
+                        { image: pic10, title: 'ช่องทางการติดต่อ' },
                     ].map((scholarship, index) => (
-                        <Grid item xs={12} sm={6} md={6} lg={6} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <Grid item xs={12} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
                             <ScholarshipCard image={scholarship.image} title={scholarship.title} />
                         </Grid>
                     ))}
