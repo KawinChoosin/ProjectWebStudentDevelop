@@ -26,6 +26,9 @@ importers:
       axios:
         specifier: ^1.7.7
         version: 1.7.7
+      cors-anywhere:
+        specifier: ^0.4.4
+        version: 0.4.4
       express:
         specifier: ^4.20.0
         version: 4.21.0
@@ -47,6 +50,9 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      react-image:
+        specifier: ^4.1.0
+        version: 4.1.0(@babel/runtime@7.25.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-router-dom:
         specifier: ^6.26.0
         version: 6.26.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -924,6 +930,10 @@ packages:
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
 
+  cors-anywhere@0.4.4:
+    resolution: {integrity: sha512-8OBFwnzMgR4mNrAeAyOLB2EruS2z7u02of2bOu7i9kKYlZG+niS7CTHLPgEXKWW2NAOJWRry9RRCaL9lJRjNqg==}
+    engines: {node: '>=0.10.0'}
+
   cosmiconfig@7.1.0:
     resolution: {integrity: sha512-AdmX6xUzdNASswsFtmwSt7Vj8po9IuqXm0UXz7QKPuEUmPB4XyjGfaAr2PSuELMwkRMVH1EpIkX5bTZGRB3eCA==}
     engines: {node: '>=10'}
@@ -1067,6 +1077,9 @@ packages:
   etag@1.8.1:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
+
+  eventemitter3@1.2.0:
+    resolution: {integrity: sha512-DOFqA1MF46fmZl2xtzXR3MPCRsXqgoFqdXcrCVYM3JNnfUeHTm/fh/v/iU7gBFpwkuBmoJPAm5GuhdDfSEJMJA==}
 
   express@4.21.0:
     resolution: {integrity: sha512-VqcNGcj/Id5ZT1LZ/cfihi3ttTn+NJmkli2eZADigjq29qTlWi/hAQ43t/VLPq8+UX06FCEx3ByOYet6ZFblng==}
@@ -1216,6 +1229,10 @@ packages:
   http-errors@2.0.0:
     resolution: {integrity: sha512-FtwrG/euBzaEjYeRqOgly7G0qviiXoJWnvEH2Z1plBdXgbyjv34pHTSb9zoeHMyDy33+DWy5Wt9Wo+TURtOYSQ==}
     engines: {node: '>= 0.8'}
+
+  http-proxy@1.11.1:
+    resolution: {integrity: sha512-qz7jZarkVG3G6GMq+4VRJPSN4NkIjL4VMTNhKGd8jc25BumeJjWWvnY3A7OkCGa8W1TTxbaK3dcE0ijFalITVA==}
+    engines: {node: '>=0.10.0'}
 
   iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
@@ -1534,6 +1551,9 @@ packages:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
 
+  proxy-from-env@0.0.1:
+    resolution: {integrity: sha512-B9Hnta3CATuMS0q6kt5hEezOPM+V3dgaRewkFtFoaRQYTVNsHqUvFXmndH06z3QO1ZdDnRELv5vfY6zAj/gG7A==}
+
   proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
 
@@ -1572,6 +1592,13 @@ packages:
     peerDependencies:
       react: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0
       react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0 || ^22.0.0
+
+  react-image@4.1.0:
+    resolution: {integrity: sha512-qwPNlelQe9Zy14K2pGWSwoL+vHsAwmJKS6gkotekDgRpcnRuzXNap00GfibD3eEPYu3WCPlyIUUNzcyHOrLHjw==}
+    peerDependencies:
+      '@babel/runtime': '>=7'
+      react: '>=16.8'
+      react-dom: '>=16.8'
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -1632,6 +1659,9 @@ packages:
 
   regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
+
+  requires-port@0.0.1:
+    resolution: {integrity: sha512-AzPDCliPoWDSvEVYRQmpzuPhGGEnPrQz9YiOEvn+UdB9ixBpw+4IOZWtwctmpzySLZTy7ynpn47V14H4yaowtA==}
 
   resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
@@ -2667,6 +2697,11 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
+  cors-anywhere@0.4.4:
+    dependencies:
+      http-proxy: 1.11.1
+      proxy-from-env: 0.0.1
+
   cosmiconfig@7.1.0:
     dependencies:
       '@types/parse-json': 4.0.2
@@ -2843,6 +2878,8 @@ snapshots:
   esutils@2.0.3: {}
 
   etag@1.8.1: {}
+
+  eventemitter3@1.2.0: {}
 
   express@4.21.0:
     dependencies:
@@ -3031,6 +3068,11 @@ snapshots:
       setprototypeof: 1.2.0
       statuses: 2.0.1
       toidentifier: 1.0.1
+
+  http-proxy@1.11.1:
+    dependencies:
+      eventemitter3: 1.2.0
+      requires-port: 0.0.1
 
   iconv-lite@0.4.24:
     dependencies:
@@ -3303,6 +3345,8 @@ snapshots:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
 
+  proxy-from-env@0.0.1: {}
+
   proxy-from-env@1.1.0: {}
 
   punycode@2.3.1: {}
@@ -3337,6 +3381,12 @@ snapshots:
 
   react-html-props@2.0.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
+  react-image@4.1.0(@babel/runtime@7.25.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@babel/runtime': 7.25.6
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
@@ -3413,6 +3463,8 @@ snapshots:
       util-deprecate: 1.0.2
 
   regenerator-runtime@0.14.1: {}
+
+  requires-port@0.0.1: {}
 
   resolve-from@4.0.0: {}
 
