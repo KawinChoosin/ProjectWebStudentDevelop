@@ -14,7 +14,6 @@ import pic9 from "./pic/ทุนปโท.png";
 import pic10 from "./pic/contact.png";
 
 
-
 const ScholarshipCard = ({ image, title }: { image: string; title: string; }) => (
     <Card sx={{ height: {lg:'550px',md:'450px',sm:'420px'} }}>
         <CardMedia component="img" image={image} alt={title} />
@@ -32,6 +31,7 @@ function Scholarship() {
             <Navbar status={false} />
             <Box sx={{ display: "flex", flexDirection: "column", width: "100%", maxWidth: { xs: "370px", sm: "700px", md: "800px", lg: "1000px" }, marginTop: "125px", padding: "20px", boxSizing: "border-box", color: "#333" }}>
                 <div className="text-topic" style={{ marginTop: "10%" }}>งานทุนการศึกษา</div>
+
                 <Box sx={{ borderBottom: '3px solid #801111', marginBottom: '40px', width: '40%' }}></Box>
                 <div className="text-detail-indent">
                 ทุนการศึกษามีหลากหลายประเภทเพื่อสนับสนุนนักศึกษาในคณะวิศวกรรมศาสตร์ให้เข้าถึงการศึกษาได้โดยทั่วถึง ตั้งแต่ทุนการศึกษาขัดสนที่ช่วยเหลือค่าใช้จ่ายในการศึกษาและอุปกรณ์การเรียน ทุนการศึกษาเรียนดีที่สนับสนุนนักศึกษาที่มีผลการเรียนดีมากที่สุด และทุนการศึกษาวิศวกรรมฯที่สนับสนุนผู้มีผลการเรียนดีเด่น ความมุ่งมั่นในการศึกษา และการทำงานที่ตรงไปตรงมา ส่งเสริมและสนับสนุนนักศึกษาให้ได้มีโอกาสศึกษาเล่าเรียนจนสำเร็จการศึกษา โดยอาศัยแหล่งทุน 2 ส่วน ประกอบด้วย

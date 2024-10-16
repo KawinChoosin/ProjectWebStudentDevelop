@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -17,6 +16,7 @@
     "@mui/joy": "^5.0.0-beta.48",
     "@mui/material": "^5.16.7",
     "axios": "^1.7.7",
+    "cors-anywhere": "^0.4.4",
     "express": "^4.20.0",
     "fs": "^0.0.1-security",
     "mui-file-dropzone": "^4.0.2",
@@ -24,6 +24,7 @@
     "pg": "^8.12.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-image": "^4.1.0",
     "react-router-dom": "^6.26.0",
     "react-social-media-embed": "^2.5.13"
   },

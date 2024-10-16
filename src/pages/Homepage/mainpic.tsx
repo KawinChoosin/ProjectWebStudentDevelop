@@ -12,6 +12,7 @@ const MainPic = () => (
       zIndex: 10, // Ensure the banner stays above other content
     }}
   >
+
     <Box
       component="img"
       src={mainpic}
@@ -31,6 +32,7 @@ const MainPic = () => (
         fontFamily: 'Prompt',
       }}
     >
+      
       <Box
         sx={{
           fontSize: {

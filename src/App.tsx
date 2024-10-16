@@ -32,7 +32,7 @@ const App = () => {
       <Mainpic />
       <Box sx={{height:"800px"}}></Box>
       <ButtonService />
-      <ActivityImage slides={slides} />
+      <ActivityImage />
       <News />
       <Footer />
     </div>

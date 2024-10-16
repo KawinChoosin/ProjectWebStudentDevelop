@@ -82,6 +82,17 @@ app.delete('/filept/:id', async (req, res) => {
   res.json({ message: 'Deleted' });
 });
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+app.get('/image-proxy', async (req, res) => {
+  try {
+    const { url } = req.query;
+    const response = await axios.get(url, { responseType: 'arraybuffer' });
+    res.set('Content-Type', 'image/jpeg');
+    res.send(response.data);
+  } catch (error) {
+    res.status(500).send('Error fetching image');
+  }
+});
+
+app.listen(3000, () => {
+  console.log(`Server running on http://localhost:3000`);
 });
