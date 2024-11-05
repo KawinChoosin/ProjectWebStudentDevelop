@@ -225,7 +225,99 @@ const News = () => {
         
 
           </Box>
+          
         </Box>
+        <Box sx={{display:'flex',justifyContent:'center'}}>
+
+    
+        <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: {
+                xs: 2,
+                sm: "30px 0px",
+                md: "30px 0px",
+                lg: "40px 50px",
+              },
+              padding: '40px 0',
+              width: '100%',
+              maxWidth: '1100px',
+              '@media (max-width: 700px)': {
+                gridTemplateColumns: 'repeat(3, 1fr)',
+              },
+              '@media (max-width: 600px)': {
+                gridTemplateColumns: 'repeat(3, 1fr)',
+              },
+            }}
+          >
+            {images.map((image, index) => (
+              <Box key={index} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", height: "100%", justifyItems: "center" }}>
+                <Button
+                  variant="contained"
+                  href={image.path}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  sx={{
+                    width: { xs: '100px', sm: '120px', md: '150px', lg: '220px' },
+                    height: { xs: '100px', sm: '120px', md: '150px', lg: '220px' },
+                    color: 'white',
+                    fontFamily: 'Prompt',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: 0,
+                    position: 'relative',
+                    overflow: 'hidden',
+                    borderRadius: '200%',
+                    // Darker shadow for normal state
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
+                    transform: hoveredIndex === index ? 'scale(1.1)' : 'scale(1)',
+                    transition: 'all 0.3s ease',
+                    // On hover, apply stronger shadow
+                    '&:hover': {
+                      boxShadow: '0 8px 20px rgba(187, 0, 32, 0.7)',
+                    },
+                  }}
+                >
+                  <img
+                    src={hoveredIndex === index ? image.hoverSrc : image.src}
+                    alt={image.alt}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: '50%',
+                      objectFit: 'cover',
+                      transition: '0.3s ease',
+                    }}
+                  />
+                </Button>
+
+                <Typography
+                  variant="body2"
+                  sx={{
+                    marginTop: '20px',
+                    fontSize: {
+                      xs: "14px",
+                      sm: "14px",
+                      md: "18px",
+                      lg: "22px",
+                    },
+                    fontWeight: 600,
+                    color: '#5B171E',
+                    fontFamily: 'Prompt',
+                    textAlign: 'center',
+                    mb:4,
+                  }}
+                >
+                  {image.text}
+                </Typography>
+              </Box>
+            ))}
+          
+          </Box>
+
+          </Box>
         {/* <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
   {images1.map((image, index) => (
     <Box key={index} sx={{
