@@ -9,27 +9,23 @@ const FacebookPageEmbed = ({ pageUrl }: any) => {
   }, []);
 
   return (
-    <div class="fb-page" 
-data-href={pageUrl}
-data-width="380" 
-data-hide-cover="false"
-data-show-facepile="false"></div>
-    // <div style={{ width: '100%' }}>
-    //   <div
-    //     className="fb-page"
-    //     data-href={pageUrl}
-    //     data-tabs="timeline"
-    //     data-small-header="false"
-    //     data-adapt-container-width="true"
-    //     data-hide-cover="false"
-    //     data-show-facepile="false"
-    //     style={{ width: '100%', height: '400px' }} // Adjust height as needed
-    //   >
-    //     <blockquote cite={pageUrl} className="fb-xfbml-parse-ignore">
-    //       <a href={pageUrl}>Facebook Page</a>
-    //     </blockquote>
-    //   </div>
-    // </div>
+    
+    <div style={{ width: '100%' }}>
+      <div
+        className="fb-page"
+        data-href={pageUrl}
+        data-tabs="timeline"
+        data-small-header="false"
+        data-adapt-container-width="true"
+        data-hide-cover="false"
+        data-show-facepile="false"
+        style={{ width: '100%', height: '400px' }} // Adjust height as needed
+      >
+        <blockquote cite={pageUrl} className="fb-xfbml-parse-ignore">
+          <a href={pageUrl}>Facebook Page</a>
+        </blockquote>
+      </div>
+    </div>
   );
 };
 
