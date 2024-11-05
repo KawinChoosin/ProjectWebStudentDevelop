@@ -1,8 +1,8 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import pic1 from './newsicon/1.png';
-import pic2 from './newsicon/2.png';
-import pic3 from './newsicon/3.png';
+// import pic1 from './newsicon/1.png';
+// import pic2 from './newsicon/2.png';
+// import pic3 from './newsicon/3.png';
 import pic11 from './newsicon/sd.jpg';
 import pic22 from './newsicon/sh.jpg';
 import pic33 from './newsicon/emf.jpg';
@@ -13,11 +13,11 @@ const images = [
   { src: pic33, alt: 'Image 6', text: 'Entaneer Mind Friend', hoverSrc: pic33, size: '200px', path: "https://www.facebook.com/@EntaneerMindFriendCMU" },
 ];
 
-const images1 = [
-  { src: pic1, alt: 'Image 1', text: 'งานทุนการศึกษา', hoverSrc: pic1, size: '200px', path: "https://www.facebook.com/StudentDevelopmentENG" },
-  { src: pic2, alt: 'Image 2', text: 'งานส่งเสริมกิจกรรมนักศึกษา', hoverSrc: pic2, size: '200px', path: "https://www.facebook.com/ScholarshipsENG" },
-  { src: pic3, alt: 'Image 3', text: 'งานวินัยนักศึกษา', hoverSrc: pic3, size: '200px', path: "https://www.facebook.com/@EntaneerMindFriendCMU" },
-];
+// const images1 = [
+//   { src: pic1, alt: 'Image 1', text: 'งานทุนการศึกษา', hoverSrc: pic1, size: '200px', path: "https://www.facebook.com/StudentDevelopmentENG" },
+//   { src: pic2, alt: 'Image 2', text: 'งานส่งเสริมกิจกรรมนักศึกษา', hoverSrc: pic2, size: '200px', path: "https://www.facebook.com/ScholarshipsENG" },
+//   { src: pic3, alt: 'Image 3', text: 'งานวินัยนักศึกษา', hoverSrc: pic3, size: '200px', path: "https://www.facebook.com/@EntaneerMindFriendCMU" },
+// ];
 
 const FacebookPageEmbed = ({ pageUrl }: any) => {
   useEffect(() => {
@@ -154,7 +154,7 @@ const News = () => {
                 gridTemplateColumns: 'repeat(3, 1fr)',
               },
               '@media (max-width: 600px)': {
-                gridTemplateColumns: 'repeat(3, 1fr)',
+                gridTemplateColumns: 'repeat(1, 1fr)',
               },
             }}
           >
@@ -166,8 +166,8 @@ const News = () => {
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                   sx={{
-                    width: { xs: '70px', sm: '120px', md: '150px', lg: '220px' },
-                    height: { xs: '70px', sm: '120px', md: '150px', lg: '220px' },
+                    width: { xs: '120px', sm: '120px', md: '150px', lg: '220px' },
+                    height: { xs: '120px', sm: '120px', md: '150px', lg: '220px' },
                     color: 'white',
                     fontFamily: 'Prompt',
                     display: 'flex',
@@ -205,15 +205,16 @@ const News = () => {
                   sx={{
                     marginTop: '20px',
                     fontSize: {
-                      xs: "10px",
+                      xs: "14px",
                       sm: "14px",
                       md: "18px",
                       lg: "22px",
                     },
-                    fontWeight: 500,
+                    fontWeight: 600,
                     color: '#5B171E',
                     fontFamily: 'Prompt',
                     textAlign: 'center',
+                    mb:4,
                   }}
                 >
                   {image.text}
@@ -225,7 +226,7 @@ const News = () => {
 
           </Box>
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+        {/* <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
   {images1.map((image, index) => (
     <Box key={index} sx={{
       display: 'flex',
@@ -267,7 +268,7 @@ const News = () => {
       </Button>
     </Box>
   ))}
-</Box>
+</Box> */}
 
         </Box>
       )}
