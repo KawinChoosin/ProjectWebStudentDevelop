@@ -95,8 +95,9 @@ function ButtonService() {
             lg: "40px 50px",
           },
           padding: '40px 0',
-          width: '80%',
+          width: '90%',
           maxWidth: '1100px',
+          
           '@media (max-width: 700px)': {
             gridTemplateColumns: 'repeat(3, 1fr)',
           },
@@ -114,16 +115,16 @@ function ButtonService() {
               onMouseLeave={() => setHoveredIndex(null)}
               sx={{
                 width: {
-                  xs: '100px',
-                  sm: '120px',
-                  md: '150px',
-                  lg: '220px',
+                  xs: '120px',
+                  sm: '140px',
+                  md: '170px',
+                  lg: '240px',
                 },
                 height: {
-                  xs: '100px',
-                  sm: '120px',
-                  md: '150px',
-                  lg: '220px',
+                  xs: '120px',
+                  sm: '140px',
+                  md: '170px',
+                  lg: '240px',
                 },
                 color: 'white',
                 fontFamily: 'Prompt',
@@ -134,7 +135,7 @@ function ButtonService() {
                 position: 'relative',
                 overflow: 'hidden',
                 borderRadius: '200%',
-                boxShadow: hoveredIndex === index ? '0 8px 20px rgba(187, 0, 32, 0.7)' : 'none',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
                 transform: hoveredIndex === index ? 'scale(1.1)' : 'scale(1)',
                 transition: 'all 0.3s ease',
               }}
@@ -156,7 +157,7 @@ function ButtonService() {
               sx={{
                 marginTop: '20px',
                 fontSize: {
-                  xs: "12px",
+                  xs: "13px",
                   sm: "14px",
                   md: "18px",
                   lg: "22px",
@@ -165,6 +166,9 @@ function ButtonService() {
                 color: '#5B171E',
                 fontFamily: 'Prompt',
                 textAlign: 'center',
+                whiteSpace: 'normal', // Allows text to wrap
+                maxWidth: '80%',      // Controls line length for better wrapping
+                wordBreak: 'break-word', // Ensures long words break properly if needed
               }}
             >
               {image.text}

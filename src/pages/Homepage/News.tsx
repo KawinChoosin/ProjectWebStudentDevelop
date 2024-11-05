@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from '@mui/material';
+import { Box, Button, Card, Grid, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 // import pic1 from './newsicon/1.png';
 // import pic2 from './newsicon/2.png';
@@ -88,7 +88,7 @@ const News = () => {
           position: 'relative',
           display: 'inline-block',
           fontFamily: 'Prompt',
-          marginBottom: 4,
+          marginBottom: 2,
           fontSize: { xs: '24px', sm: '30px', md: '35px', lg: '40px', xl: '45px' },
           '&:after': {
             content: '""',
@@ -159,67 +159,86 @@ const News = () => {
             }}
           >
             {images.map((image, index) => (
-              <Box key={index} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", height: "100%", justifyItems: "center" }}>
-                <Button
-                  variant="contained"
-                  href={image.path}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  sx={{
-                    width: { xs: '120px', sm: '120px', md: '150px', lg: '220px' },
-                    height: { xs: '120px', sm: '120px', md: '150px', lg: '220px' },
-                    color: 'white',
-                    fontFamily: 'Prompt',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: 0,
-                    position: 'relative',
-                    overflow: 'hidden',
-                    borderRadius: '200%',
-                    // Darker shadow for normal state
-                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
-                    transform: hoveredIndex === index ? 'scale(1.1)' : 'scale(1)',
-                    transition: 'all 0.3s ease',
-                    // On hover, apply stronger shadow
-                    '&:hover': {
-                      boxShadow: '0 8px 20px rgba(187, 0, 32, 0.7)',
-                    },
-                  }}
-                >
-                  <img
-                    src={hoveredIndex === index ? image.hoverSrc : image.src}
-                    alt={image.alt}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: '50%',
-                      objectFit: 'cover',
-                      transition: '0.3s ease',
-                    }}
-                  />
-                </Button>
+           <Card
+           key={index}
+           sx={{
+             width: "100%",
+             height: "100%",
+             boxShadow: hoveredIndex === index ? '0 8px 20px rgba(187, 0, 32, 0.7)' : '0 4px 12px rgba(0, 0, 0, 0.5)', // Conditional shadow for card
+             transition: 'all 0.3s ease', // Smooth transition for shadow change
+             '&:hover': {
+               boxShadow: '0 8px 20px rgba(187, 0, 32, 0.7)', // Shadow when card is hovered
+             },
+           }}
+         >
+           <a
+             href={image.path}
+             style={{ textDecoration: 'none', display: 'block', width: '100%', height: '100%' }} // Make the link cover the entire card
+           >
+             <Grid container spacing={2} alignItems="center">
+               {/* Image Section (Grid item with 8 columns) */}
+               <Grid item xs={7} sm={8} md={8} lg={8} sx={{ display: 'flex', justifyContent: 'center' }}>
+                 <Button
+                   variant="contained"
+                   sx={{
+                     width: { xs: '120px', sm: '120px', md: '150px', lg: '220px' },
+                     height: { xs: '120px', sm: '120px', md: '150px', lg: '220px' },
+                     color: 'white',
+                     display: 'flex',
+                     justifyContent: 'center',
+                     alignItems: 'center',
+                     padding: 0,
+                     margin: 2,
+                     position: 'relative',
+                     overflow: 'hidden',
+                     borderRadius: '200%',
+                     boxShadow: 'none', // Remove shadow from button itself
+                     transition: 'all 0.3s ease',
+                   }}
+                 >
+                   <img
+                     src={hoveredIndex === index ? image.hoverSrc : image.src}
+                     alt={image.alt}
+                     style={{
+                       width: '100%',
+                       height: '100%',
+                       borderRadius: '50%',
+                       objectFit: 'cover',
+                       transition: '0.3s ease',
+                     }}
+                   />
+                 </Button>
+               </Grid>
+         
+               {/* Text Section (Grid item with 4 columns) */}
+               <Grid item xs={4} sm={4} md={4} lg={4}>
+                 <Typography
+                   variant="body2"
+                   sx={{
+                     fontSize: {
+                       xs: "14px",
+                       sm: "14px",
+                       md: "18px",
+                       lg: "22px",
+                     },
+                     fontWeight: 600,
+                     color: '#5B171E',
+                     fontFamily: 'Prompt',
+                     textAlign: 'left',
+                     whiteSpace: 'normal', // Allows text to wrap
+                     maxWidth: '90%',      // Controls line length for better wrapping
+                     wordBreak: 'break-word',
+                   }}
+                 >
+                   {image.text}
+                 </Typography>
+               </Grid>
+             </Grid>
+           </a>
+         </Card>
+         
+           
 
-                <Typography
-                  variant="body2"
-                  sx={{
-                    marginTop: '20px',
-                    fontSize: {
-                      xs: "14px",
-                      sm: "14px",
-                      md: "18px",
-                      lg: "22px",
-                    },
-                    fontWeight: 600,
-                    color: '#5B171E',
-                    fontFamily: 'Prompt',
-                    textAlign: 'center',
-                    mb:4,
-                  }}
-                >
-                  {image.text}
-                </Typography>
-              </Box>
             ))}
           
         
@@ -227,7 +246,7 @@ const News = () => {
           </Box>
           
         </Box>
-        <Box sx={{display:'flex',justifyContent:'center'}}>
+        {/* <Box sx={{display:'flex',justifyContent:'center'}}>
 
     
         <Box
@@ -317,7 +336,7 @@ const News = () => {
           
           </Box>
 
-          </Box>
+          </Box> */}
         {/* <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
   {images1.map((image, index) => (
     <Box key={index} sx={{
