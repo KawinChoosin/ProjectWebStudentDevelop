@@ -17,7 +17,6 @@ import CareerDay from './pages/EJS/Careerday';
 import JobSearch from './pages/EJS/FindJob';
 import ExternalJobs from './pages/EJS/GetJob';
 import Announcements from './pages/Announcements/Announcement';
-import Form from './pages/Formpage/UploadPage';
 
 const rootElement = document.getElementById('root') as HTMLElement;
 const root = createRoot(rootElement);
@@ -41,7 +40,7 @@ root.render(
         <Route path="/apply-job" element={<JobSearch />} />
         <Route path="/external-jobs" element={<ExternalJobs />} />
         <Route path="/announcements" element={<Announcements />} />
-        <Route path="/form" element={<Form />} />
+
       </Routes>
     </Router>
   </React.StrictMode>

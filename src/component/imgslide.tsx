@@ -77,6 +77,7 @@ function CustomCarousel({ children }: CustomCarouselProps) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              bgcolor:"#5B171E"
             }}
           >
             {item && (
@@ -85,8 +86,16 @@ function CustomCarousel({ children }: CustomCarouselProps) {
                 src={item.props.src}
                 sx={{
                   width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
+               
+                 maxHeight: {
+                      xs: "160px",  // Extra-small screens
+                      sm: "240px",  // Small screens
+                      md: "300px",  // Medium screens
+                      lg: "460px",  // Large screens
+                      xl: "490px",  // Extra-large screens
+                    },
+                  maxWidth: '1920px',
+                  objectFit: "contain",
                 }}
               />
             )}
