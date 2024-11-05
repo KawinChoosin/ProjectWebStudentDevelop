@@ -7,12 +7,6 @@ import News from './pages/Homepage/News';
 import { Box } from '@mui/material';
 
 const App = () => {
-  const imagePaths = [
-    "image1.jpg", 
-    "image2.jpg", 
-    "image3.jpg", 
-    "image4.jpg"
-  ];
 
   return (
     <div

@@ -1,3 +1,4 @@
+// @ts-ignore
 import React from 'react';
 import { Box } from '@mui/material';
 import CustomCarousel from '../../component/imgslide'; // Assuming CustomCarousel is in this path

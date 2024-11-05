@@ -3,35 +3,35 @@ import Navbar from '../../component/Navbar';
 import Footer from '../../component/Footer'; 
 import "../../component/text.css";
 
-const announcements = [
-  {
-    category: "ประกาศ",
-    links: [
-      { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
-      { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
-      // Add more links as needed
-    ]
-  },
-  {
-    category: "ระเบียบ",
-    links: [
-      { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
-      { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
-      { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
-      { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
-      { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
-      { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
-      // Add more links as needed
-    ]
-  },
-  {
-    category: "ข้อบังคับ",
-    links: [
-      { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
-      // Add more links as needed
-    ]
-  }
-];
+// const announcements = [
+//   {
+//     category: "ประกาศ",
+//     links: [
+//       { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
+//       { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
+//       // Add more links as needed
+//     ]
+//   },
+//   {
+//     category: "ระเบียบ",
+//     links: [
+//       { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
+//       { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
+//       { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
+//       { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
+//       { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
+//       { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
+//       // Add more links as needed
+//     ]
+//   },
+//   {
+//     category: "ข้อบังคับ",
+//     links: [
+//       { href: "https://administer.eng.cmu.ac.th/download/doc-adminis_1.pdf", text: "-ประกาศของมหาวิทยาลัยเชียงใหม่ เรื่อง กำหนดประเภทรายรับ รายการ..." },
+//       // Add more links as needed
+//     ]
+//   }
+// ];
 
 function Announcement() {
   return (

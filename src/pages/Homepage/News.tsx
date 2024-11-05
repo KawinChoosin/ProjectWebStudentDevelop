@@ -1,7 +1,6 @@
 import { Box, Grid } from '@mui/material';
 import { useEffect } from 'react';
-import { FacebookEmbed } from 'react-social-media-embed';
-// Component for embedding a single Facebook page
+
 const FacebookPageEmbed = ({ pageUrl }:any) => {
   useEffect(() => {
     if (window.FB) {

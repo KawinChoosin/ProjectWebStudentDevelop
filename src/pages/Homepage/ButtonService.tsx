@@ -30,7 +30,8 @@ const images = [
 
 function ButtonService() {
   // State to track hovered index for dynamic image change
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
 
   useEffect(() => {
     // Preload hover images
