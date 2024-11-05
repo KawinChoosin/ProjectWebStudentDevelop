@@ -47,7 +47,7 @@ const FacebookPageEmbed = ({ pageUrl }: any) => {
 };
 
 const News = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredIndex] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   const facebookPages = [
