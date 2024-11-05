@@ -9,48 +9,27 @@ const FacebookPageEmbed = ({ pageUrl }: any) => {
   }, []);
 
   return (
-    <Box>
-      <div
-        className="fb-page"
-        data-href={pageUrl}
-        data-tabs="timeline"
-        data-small-header="false"
-        data-adapt-container-width="true"
-        data-hide-cover="false"
-        data-show-facepile="false"
-        style={{
-          width: '400px',
-          height: '200px', // Default height
-        }}
-      >
-        <blockquote cite={pageUrl} className="fb-xfbml-parse-ignore">
-          <a href={pageUrl}>Facebook Page</a>
-        </blockquote>
-      </div>
-
-      <style>
-        {`
-          @media (max-width: 600px) {
-            .fb-page {
-              width: 360px !important;
-              height: 250px !important; /* Adjust for smaller screens */
-            }
-          }
-          @media (min-width: 601px) and (max-width: 960px) {
-            .fb-page {
-              width: 360px !important;
-              height: 300px !important; /* Adjust for medium screens */
-            }
-          }
-          @media (min-width: 961px) {
-            .fb-page {
-              width: 360px !important;
-              height: 400px !important; /* Default for larger screens */
-            }
-          }
-        `}
-      </style>
-    </Box>
+    <div class="fb-page" 
+data-href={pageUrl}
+data-width="380" 
+data-hide-cover="false"
+data-show-facepile="false"></div>
+    // <div style={{ width: '100%' }}>
+    //   <div
+    //     className="fb-page"
+    //     data-href={pageUrl}
+    //     data-tabs="timeline"
+    //     data-small-header="false"
+    //     data-adapt-container-width="true"
+    //     data-hide-cover="false"
+    //     data-show-facepile="false"
+    //     style={{ width: '100%', height: '400px' }} // Adjust height as needed
+    //   >
+    //     <blockquote cite={pageUrl} className="fb-xfbml-parse-ignore">
+    //       <a href={pageUrl}>Facebook Page</a>
+    //     </blockquote>
+    //   </div>
+    // </div>
   );
 };
 
@@ -66,7 +45,6 @@ const News = () => {
   // Load Facebook SDK
   useEffect(() => {
     if (!window.FB) {
-      // Insert Facebook SDK script
       const script = document.createElement('script');
       script.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0";
       script.async = true;
@@ -112,7 +90,7 @@ const News = () => {
           '&:after': {
             content: '""',
             display: 'block',
-            width: '125%',
+            width: '100%',
             height: '3px',
             backgroundColor: '#b00020',
             marginTop: '5px',
@@ -124,18 +102,20 @@ const News = () => {
         ข่าวประชาสัมพันธ์
       </Box>
 
-      {/* Grid container for responsive layout */}
-      <Grid container spacing={2} sx={{ justifyContent: 'center', marginBottom: 10 }}>
+      <Grid container sx={{ justifyContent: 'center', marginBottom: 10 }}>
         {facebookPages.map((pageUrl, index) => (
           <Grid
             item
             xs={12}
             sm={6}
-            md={3}
+            md={4.5}
+            lg={3}
             key={index}
             sx={{
               display: 'flex',
               flexDirection: 'column',
+              justifyContent: 'center',
+              alignContent: 'center',
               gap: '4px',
               flexGrow: 1,
               flexShrink: 1,

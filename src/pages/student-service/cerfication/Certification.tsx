@@ -63,7 +63,7 @@ function Certification() {
                             },
                         }}
                     >
-                        Click here to visit website
+                        เข้าสู่เว็บไซต์
                     </Button>
                 </Box>
 
