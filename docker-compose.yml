@@ -1,11 +1,12 @@
-version: '3.8'
+version: "3.8"
 
+name: Puttana
 services:
   postgres:
     image: postgres:16-alpine
     container_name: puttana_db
     ports:
-      - ":${POSTGRES_PORT}:5432"  # Changed to use default PostgreSQL port
+      - "${POSTGRES_PORT}:5432"
     volumes:
       - db_puttana:/var/lib/postgresql/data
     environment:
@@ -19,27 +20,36 @@ services:
     build: ./BackendPT
     container_name: puttana_backend
     ports:
-      - '${port}:${port}'
+      - "${BackendPORT}:3000"
     environment:
-      DB_USER: ${POSTGRES_USER}
-      DB_PASSWORD: ${POSTGRES_PASSWORD}
-      DB_NAME: ${POSTGRES_DB}
+      - DATABASE_URL=${DATABASE_URL}
     depends_on:
       - postgres
     networks:
       - puttana
+    env_file:
+      - ./.env
+    volumes:
+      - ./BackendPT:/app
+      - /app/node_modules
 
-  frontend:
-    build: .
-    container_name: puttana_frontend
-    ports:
-      - '${Font_Port}:5173'
-    depends_on:
-      - backend
-    networks:
-      - puttana
-    environment:
-     - CHOKIDAR_USEPOLLING=true
+  # frontend:
+  #   container_name: puttana_frontend
+  #   build:
+  #     context: .  
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "${FrontendPORT}:5173"
+  #   networks:
+  #     - puttana
+  #   depends_on:
+  #     - backend
+  #   environment:
+  #     - CHOKIDAR_USEPOLLING=true
+  #     - VITE_HOST=0.0.0.0
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - /usr/src/app/node_modules
 
 volumes:
   db_puttana:

@@ -1,6 +1,6 @@
 import { Box, Grid } from '@mui/material';
 import { useEffect } from 'react';
-
+import { FacebookEmbed } from 'react-social-media-embed';
 // Component for embedding a single Facebook page
 const FacebookPageEmbed = ({ pageUrl }:any) => {
   useEffect(() => {
@@ -10,15 +10,7 @@ const FacebookPageEmbed = ({ pageUrl }:any) => {
   }, []);
 
   return (
-    <Box
-      sx={{
-        // flexGrow: 1,
-        // flexShrink: 1,
-        // maxWidth: '360px', // Ensure maximum size for larger screens
-        // width: '100%',     // Allow full width for smaller screens
-        // margin: '0 auto',  // Center horizontally within its container
-      }}
-    >
+    <Box>
       <div
         className="fb-page"
         data-href={pageUrl}
@@ -28,7 +20,7 @@ const FacebookPageEmbed = ({ pageUrl }:any) => {
         data-hide-cover="false"
         data-show-facepile="false"
         style={{
-          width: '100%',
+          width: '400px',
           height: '200px', // Default height
         }}
       >
@@ -65,6 +57,7 @@ const FacebookPageEmbed = ({ pageUrl }:any) => {
         `}
       </style>
     </Box>
+
   );
 };
 
@@ -91,10 +84,11 @@ const News = () => {
           marginLeft: '10%',
           fontWeight: 'Medium',
           color: '#b00020',
-          marginBottom: '20px',
+    
           position: 'relative',
           display: 'inline-block',
           fontFamily: 'Prompt',
+            marginBottom: 4,
           fontSize: {
             xs: '24px', // mobile phones
             sm: '30px', // tablets
@@ -111,6 +105,7 @@ const News = () => {
             marginTop: '5px',
             position: 'absolute',
             left: '0',
+         
           },
         }}
       >
@@ -118,7 +113,7 @@ const News = () => {
       </Box>
 
       {/* Grid container for responsive layout */}
-      <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
+      <Grid container spacing={2} sx={{ justifyContent: 'center',marginBottom:10 }}>
         {facebookPages.map((pageUrl, index) => (
           <Grid
             item
@@ -127,14 +122,14 @@ const News = () => {
             md={3}  // 3 columns on medium and larger screens
             key={index}
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexGrow: 1,    // Allow grid items to grow
-              flexShrink: 1,  // Allow grid items to shrink
-              maxWidth: '360px', // Limit the max width of the embeds
-              width: '100%', // Fill the available space
-              margin: '0 auto', // Ensure the grid item is centered
+              display: 'flex',       // Ensures flexbox layout for children
+              flexDirection: 'column', // Arranges children vertically
+              gap: '4px',           // Sets gap between components (adjust as needed)
+              flexGrow: 1,
+              flexShrink: 1,
+             // Allow full width for smaller screens
+              margin: 2,    
+             
             }}
           >
             <FacebookPageEmbed pageUrl={pageUrl} />

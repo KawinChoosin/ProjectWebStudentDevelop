@@ -17,7 +17,11 @@ import CareerDay from './pages/EJS/Careerday';
 import JobSearch from './pages/EJS/FindJob';
 import ExternalJobs from './pages/EJS/GetJob';
 import Announcements from './pages/Announcements/Announcement';
-import Form from './pages/Formpage/UploadPage';
+import Form from './pages/Admin/Formpage/UploadPage';
+import Textrich from './pages/Admin/Test/textrich';
+import Admin from './pages/Admin/admin';
+import Executive_ad from './pages/Admin/Executive/Executive';
+
 
 const rootElement = document.getElementById('root') as HTMLElement;
 const root = createRoot(rootElement);
@@ -41,7 +45,13 @@ root.render(
         <Route path="/apply-job" element={<JobSearch />} />
         <Route path="/external-jobs" element={<ExternalJobs />} />
         <Route path="/announcements" element={<Announcements />} />
+        
+      
+      
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/executive_ad" element={<Executive_ad />} />
         <Route path="/form" element={<Form />} />
+        <Route path="/test" element={<Textrich />} />
       </Routes>
     </Router>
   </React.StrictMode>

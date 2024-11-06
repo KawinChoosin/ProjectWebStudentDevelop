@@ -17,11 +17,6 @@ import pic10 from "./pic/contact.png";
 const ScholarshipCard = ({ image, title }: { image: string; title: string; }) => (
     <Card sx={{ height: {lg:'550px',md:'450px',sm:'420px'} }}>
         <CardMedia component="img" image={image} alt={title} />
-        {/* <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <div className="text-detail" style={{ color: '#000000', fontFamily: 'Prompt', marginBottom: '6px',textAlign: 'center' }}>
-                {title}
-            </div>
-        </CardContent> */}
     </Card>
 );
 

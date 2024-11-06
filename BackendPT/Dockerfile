@@ -1,20 +1,24 @@
 # Use the official Node.js image
 FROM node:20
 
-# Create and change to the app directory
-WORKDIR /usr/src/app
+# Set the working directory inside the container
+WORKDIR /app
 
-# Copy application dependency manifests to the container image
+# Copy package.json and package-lock.json files to the container
 COPY package*.json ./
 
-# Install dependencies
+# Install dependencies (this will only run if package.json or package-lock.json changes)
 RUN npm install
 
-# Copy local code to the container image
+# Copy Prisma schema and generate Prisma client for Linux environment
+# COPY prisma ./prisma
+# RUN npx prisma generate
+
+# Copy the rest of the application code
 COPY . .
 
-# Make port 2222 available to the world outside this container
-EXPOSE 2222
+# Expose the port the app will run on
+EXPOSE 3000
 
-# Run the web service on container startup
-CMD [ "node", "server.js" ]
+# Run the application
+CMD ["npm", "run", "backend"]

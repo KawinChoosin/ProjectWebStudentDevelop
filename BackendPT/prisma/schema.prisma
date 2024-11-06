@@ -19,3 +19,30 @@ model FilePT {
   name      String
   filePath  String
 }
+
+model Page {
+  P_id   Int     @id @default(autoincrement())
+  P_name String
+  Data   Data[]  @relation("PageToData")
+
+  Image Image[] @relation(name: "PageToImages")
+}
+
+model Data {
+  D_id   Int     @id @default(autoincrement())
+  P_id   Int
+  P_data String  @db.Text // Use @db.Text to specify a large text field in PostgreSQL
+
+  Page   Page    @relation(fields: [P_id], references: [P_id], name: "PageToData")
+
+  @@index([P_id])
+}
+
+model Image {
+  IMG_id  Int     @id @default(autoincrement())
+  P_id    Int
+  imgPath String
+  status  Boolean @default(false)
+
+  Page    Page    @relation(fields: [P_id], references: [P_id], name: "PageToImages")
+}
