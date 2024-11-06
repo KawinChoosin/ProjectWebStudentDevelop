@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, IconButton } from "@mui/material";
+import bg from './bg.png';
 
 interface CustomCarouselProps {
   children: React.ReactElement<{ src: string }>[];
@@ -70,23 +71,48 @@ function CustomCarousel({ children }: CustomCarouselProps) {
       >
         {children.map((item, index) => (
           <Box
-            key={index}
-            sx={{
-              flex: "0 0 100%",
-              height: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          key={index}
+          sx={{
+            flex: "0 0 100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundImage: `url(${bg})`,  // Set the background image
+            backgroundSize: "cover",        // Ensure the image covers the entire Box
+            backgroundPosition: "center",   // Center the image within the Box
+            backgroundRepeat: "no-repeat",  // Ensure the image doesn't repeat
+            position: "relative",           // To layer any other elements on top
+            // Add transparent overlay with your desired color
+            '&::before': {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: "rgba(91, 23, 30, 0.7)", // Transparent overlay color
+              zIndex: 0, // Ensure the overlay is above the background image
+            }
+          }}
+        >
             {item && (
               <Box
                 component="img"
                 src={item.props.src}
                 sx={{
                   width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
+               
+                 height: {
+                      xs: "180px",  // Extra-small screens
+                      sm: "240px",  // Small screens
+                      md: "320px",  // Medium screens
+                      lg: "460px",  // Large screens
+                      xl: "480px",  // Extra-large screens
+                    },
+                  maxWidth: '1920px',
+                  objectFit: "scale-down",
+                  zIndex: 1,
                 }}
               />
             )}

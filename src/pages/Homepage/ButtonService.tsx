@@ -1,4 +1,4 @@
-import  { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import IC1 from "./PicIcon/1.png";
 import IC2 from "./PicIcon/2.png";
@@ -17,54 +17,51 @@ import IC66 from "./PicIcon/66.png";
 import IC77 from "./PicIcon/77.png";
 import IC88 from "./PicIcon/88.png";
 
-
 const images = [
-  { src: IC1, alt: 'Image 1', text: 'งานทุนการศึกษา', hoverSrc: IC11, size: '200px',path:"/scholarship"},
-  { src: IC2, alt: 'Image 2', text: 'งานส่งเสริมกิจกรรมนักศึกษา', hoverSrc: IC22, size: '200px' ,path:"/activities" },
-  { src: IC3, alt: 'Image 3', text: 'งานวินัยนักศึกษา', hoverSrc: IC33, size: '200px',path:"/discipline"},
-  { src: IC4, alt: 'Image 4', text: 'งานให้คำปรึกษาและดูแลสุขภาพจิต', hoverSrc: IC44, size: '200px',path:"/entaneermind"},
-  { src: IC5, alt: 'Image 5', text: 'สวัสดิการสุขภาพนักศึกษา', hoverSrc: IC55, size: '200px',path:"/welfare"},
-  { src: IC6, alt: 'Image 6', text: 'จองสถานที่', hoverSrc: IC66, size: '200px' ,path:"/reserve-place"},
-  { src: IC7, alt: 'Image 7', text: 'หนังสือรับรอง', hoverSrc: IC77, size: '200px',path:"/certification"},
-  { src: IC8, alt: 'Image 8', text: 'Entaneer Upskill', hoverSrc: IC88, size: '200px',path:"/entaneer-upskill"},
+  { src: IC1, alt: 'Image 1', text: 'งานทุนการศึกษา', hoverSrc: IC11, size: '200px', path: "/scholarship" },
+  { src: IC2, alt: 'Image 2', text: 'งานส่งเสริมกิจกรรม\nนักศึกษา', hoverSrc: IC22, size: '200px', path: "/activities" },
+  { src: IC3, alt: 'Image 3', text: 'งานวินัยนักศึกษา', hoverSrc: IC33, size: '200px', path: "/discipline" },
+  { src: IC4, alt: 'Image 4', text: 'งานให้คำปรึกษาและ\nดูแลสุขภาพจิต', hoverSrc: IC44, size: '200px', path: "/entaneermind" },
+  { src: IC5, alt: 'Image 5', text: 'สวัสดิการสุขภาพ\nนักศึกษา', hoverSrc: IC55, size: '200px', path: "/welfare" },
+  { src: IC6, alt: 'Image 6', text: 'จองสถานที่', hoverSrc: IC66, size: '200px', path: "/reserve-place" },
+  { src: IC7, alt: 'Image 7', text: 'หนังสือรับรอง', hoverSrc: IC77, size: '200px', path: "/certificate" },
+  { src: IC8, alt: 'Image 8', text: 'Entaneer Upskill', hoverSrc: IC88, size: '200px', path: "/entaneer-upskill" },
 ];
 
-
-
 function ButtonService() {
+  // State to track hovered index for dynamic image change
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
+    // Preload hover images
     images.forEach(image => {
       const img = new Image();
       img.src = image.hoverSrc;
-      img.onload = () => console.log(`${image.alt} hover image preloaded`);
-      img.onerror = (error) => console.error(`Error loading ${image.alt} hover image:`, error);
     });
-  }, []); 
-
+  }, []);
 
   return (
     <Box
-    sx={{
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: '100%',
-    zIndex: 20,
-    backgroundColor: 'white',
-  }}
->
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+        zIndex: 20,
+        backgroundColor: 'white',
+      }}
+    >
       <Box
         sx={{
           textAlign: 'center',
           marginTop: '40px',
           marginBottom: '20px',
           fontSize: {
-            xs: '24px', // mobile phones
-            sm: '30px', // tablets
-            md: '35px', // desktops
-            lg: '40px', // large desktops
-            xl: '45px'  // larger screens
+            xs: '24px',
+            sm: '30px',
+            md: '35px',
+            lg: '40px',
+            xl: '45px'
           },
           fontWeight: 'Medium',
           color: '#b00020',
@@ -83,50 +80,49 @@ function ButtonService() {
           },
         }}
       >
-        บริการนักศึกษา 
+        บริการนักศึกษา
       </Box>
 
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)', // Four columns
+          gridTemplateColumns: 'repeat(4, 1fr)',
           gap: {
-            xs: "15px 0px", // Vertical gap of 15px and horizontal gap of 30px
-            sm: "30px 0px", // Adjusted for tablets
-            md: "30px 0px", // For small desktops
-            lg: "40px 50px", // For larger desktops
+            xs: "15px 0px",
+            sm: "30px 0px",
+            md: "30px 0px",
+            lg: "40px 50px",
           },
           padding: '40px 0',
-          width: '80%', // Full width
+          width: '90%',
           maxWidth: '1100px',
-          '@media (max-width: 700px)': { // Adjust this breakpoint as needed
-            gridTemplateColumns: 'repeat(3, 1fr)', // Change to 2 columns
-          }, // Optional: limit max width for better presentation
-          '@media (max-width: 600px)': { // Adjust this breakpoint as needed
-            gridTemplateColumns: 'repeat(2, 1fr)', // Change to 2 columns
+          '@media (max-width: 700px)': {
+            gridTemplateColumns: 'repeat(3, 1fr)',
+          },
+          '@media (max-width: 600px)': {
+            gridTemplateColumns: 'repeat(2, 1fr)',
           }
-          // '@media (max-width: 600px)': { // Another breakpoint for smaller screens
-          //   gridTemplateColumns: '1fr', // Change to 1 column
-          // },
         }}
       >
         {images.map((image, index) => (
-          <Box key={index} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',width:"100%",height:"100%",justifyItems:"center"}}>
+          <Box key={index} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", height: "100%", justifyItems: "center" }}>
             <Button
               variant="contained"
               href={image.path}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
               sx={{
                 width: {
-                  xs: '100px', // Width for mobile
-                  sm: '120px', // Width for tablets
-                  md: '150px', // Width for small desktops
-                  lg: '220px', // Width for larger desktops
+                  xs: '140px',
+                  sm: '160px',
+                  md: '175px',
+                  lg: '240px',
                 },
                 height: {
-                  xs: '100px', // Height for mobile
-                  sm: '120px', // Height for tablets
-                  md: '150px', // Height for small desktops
-                  lg: '220px', // Height for larger desktops
+                  xs: '140px',
+                  sm: '160px',
+                  md: '175px',
+                  lg: '240px',
                 },
                 color: 'white',
                 fontFamily: 'Prompt',
@@ -137,15 +133,13 @@ function ButtonService() {
                 position: 'relative',
                 overflow: 'hidden',
                 borderRadius: '200%',
-                '&:hover ': {
-                  content: `url(${image.hoverSrc})`,
-                  boxShadow: '0 8px 20px rgba(187, 0, 32, 0.7)', // Glow effect
-                  transform: 'scale(1.1)', // Slightly enlarge on hover
-                },
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
+                transform: hoveredIndex === index ? 'scale(1.1)' : 'scale(1)',
+                transition: 'all 0.3s ease',
               }}
             >
               <img
-                src={image.src}
+                src={hoveredIndex === index ? image.hoverSrc : image.src}
                 alt={image.alt}
                 style={{
                   width: '100%',
@@ -160,16 +154,19 @@ function ButtonService() {
               variant="body2"
               sx={{
                 marginTop: '20px',
-                fontSize:  {
-                  xs: "12px", // Width for mobile
-                  sm: "14px", // Width for tablets
-                  md: "18px", // Width for small desktops
-                  lg: "22px", // Width for larger desktops
+                fontSize: {
+                  xs: "13px",
+                  sm: "14px",
+                  md: "18px",
+                  lg: "20px",
                 },
-                fontWeight:700,
+                fontWeight: 700,
                 color: '#5B171E',
                 fontFamily: 'Prompt',
-                textAlign: 'center', // Center the text
+                textAlign: 'center',
+                whiteSpace: 'pre-line',  // This ensures that '\n' creates line breaks
+                maxWidth: '80%',          // Controls line length for better wrapping
+                wordBreak: 'break-word',  // Ensures long words break properly if needed
               }}
             >
               {image.text}

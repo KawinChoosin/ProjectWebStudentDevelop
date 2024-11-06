@@ -62,14 +62,39 @@ function Navbar({ status }: NavbarProps) {
     fontFamily: 'Prompt',
     fontWeight: 'Regular',
     fontSize: '18px',
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#C33443',
     boxShadow: '0px 8px 16px rgba(0,0,0,0.2)',
     zIndex: 10,
     borderRadius: '0px',
     width:"100%",
+    ...(studentServicesDropdownOpen && {
+      maxHeight: '500px', // Adjust based on content height
+      backgroundColor: '#C33443',
+  
+    }),
+    
+    ...(ejsDropdownOpen && {
+      maxHeight: '500px', // Adjust based on content height
+      backgroundColor: '#C33443',
+
+    }),
+    
   };
 
-  const dropdownMenuStyles = {
+  const slideDownAnimation = {
+    '@keyframes slideDown': {
+      '0%': {
+        opacity: 0,
+        transform: 'translateY(-20px)',
+      },
+      '100%': {
+        opacity: 1,
+        transform: 'translateY(0)',
+      },
+    },
+  };
+
+  const dropdownMenuStyles = () => ({
     display: 'block',
     position: 'absolute',
     top: '100%',
@@ -78,11 +103,32 @@ function Navbar({ status }: NavbarProps) {
     fontFamily: 'Prompt',
     fontWeight: 'Regular',
     fontSize: '18px',
-    backgroundColor: '#f1f1f1',
+    backgroundColor: 'rgba(128, 17, 17)',
     boxShadow: '0px 8px 16px rgba(0,0,0,0.2)',
     zIndex: 10,
     borderRadius: '0px',
-  };
+    overflow: 'hidden',
+    maxHeight: 0,
+    opacity: 0,
+    transition: 'max-height 0.4 ease, opacity 0.4s ease',
+    
+    ...(studentServicesDropdownOpen && {
+      maxHeight: '500px', // Adjust based on content height
+      backgroundColor: '#C33443',
+      animation: studentServicesDropdownOpen ? 'slideDown 0.4s ease forwards' : 'slideUp 0.4s ease forwards',
+    }),
+    
+    ...(ejsDropdownOpen && {
+      maxHeight: '500px', // Adjust based on content height
+      backgroundColor: '#C33443',
+      animation: ejsDropdownOpen ? 'slideDown 0.4s ease forwards' : 'slideUp 0.4s ease forwards',
+    }),
+    
+    
+
+   
+    ...slideDownAnimation,
+  });
 
   const dropdownButtonStyles = {
     color: '#fff',
@@ -110,10 +156,14 @@ function Navbar({ status }: NavbarProps) {
     fontSize: '18px',
     backgroundColor: 'rgba(128, 17, 17)',
     borderRadius: '0',
+    transition: 'transform 0.3s ease', // Smooth transition for the movement
     '&:hover': {
       backgroundColor: '#C33443',
+      transform: 'translateX(10px)', // Move text 10px to the right on hover
+      
     },
   };
+  
 
   const topics = {
     aboutUs: { name: 'เกี่ยวกับเรา', href: '/aboutus' },
@@ -233,33 +283,32 @@ function Navbar({ status }: NavbarProps) {
             <Button sx={dropdownButtonStyles} href="/aboutus">เกี่ยวกับเรา</Button>
           </Box>
           <Box
-            sx={{ position: 'relative' }}
-            onMouseEnter={() => handleMouseEnter('บริการนักศึกษา')}
-            onMouseLeave={() => handleMouseLeave('บริการนักศึกษา')}
-          >
-            <Button
-              sx={dropdownButtonStyles}
-              endIcon={studentServicesDropdownOpen ? (
-                <ArrowDropUpIcon sx={{ fontSize: '30px' }}  /> // Adjust size here
-              ) : (
-                <ArrowDropDownIcon sx={{ fontSize: '30px' }}   /> // Adjust size here
-              )}
+              sx={{ position: 'relative' }}
+              onMouseEnter={() => handleMouseEnter('บริการนักศึกษา')}
+              onMouseLeave={() => handleMouseLeave('บริการนักศึกษา')}
             >
-              บริการนักศึกษา
-            </Button>
-            {studentServicesDropdownOpen && (
-              <Box sx={dropdownMenuStyles}>
-                {/* Dropdown items */}
-                <Box>
-                      {topics.studentServices.subtopics.map((item, index) => (
-                        <Button key={index} sx={[dropdownItemStyles, { width: '240px', height: '40px' }]} component="a" href={item.href}>
-                          {item.name}
-                        </Button>
-                      ))}
+              <Button
+                sx={dropdownButtonStyles}
+                endIcon={studentServicesDropdownOpen ? (
+                  <ArrowDropUpIcon sx={{ fontSize: '30px' }} />
+                ) : (
+                  <ArrowDropDownIcon sx={{ fontSize: '30px' }} />
+                )}
+              >
+                บริการนักศึกษา
+              </Button>
+              {studentServicesDropdownOpen && (
+                <Box sx={dropdownMenuStyles}>
+                  <Box>
+                    {topics.studentServices.subtopics.map((item, index) => (
+                      <Button key={index} sx={[dropdownItemStyles, { width: '320px', height: '40px' }]} component="a" href={item.href}>
+                        {item.name}
+                      </Button>
+                    ))}
+                  </Box>
                 </Box>
-              </Box>
-            )}
-          </Box>
+              )}
+            </Box>
           <Box
             sx={{ position: 'relative' }}
             onMouseEnter={() => handleMouseEnter('ENTANEER JOB SEARCH')}

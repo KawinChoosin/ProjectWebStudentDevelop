@@ -1,32 +1,21 @@
-
 // @ts-ignore
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Box } from '@mui/material';
-import ImageSlider from '../../component/imgslide'; // Ensure this is set up correctly
+import CustomCarousel from '../../component/imgslide'; // Assuming CustomCarousel is in this path
+
+// Define the list of image paths in the public/imgslide folder
+const imagePaths = [
+  'imgslide/1.jpg', // Image path relative to the public folder
+  'imgslide/2.png',
+  'imgslide/3.jpg',
+  'imgslide/4.jpg', // Image path relative to the public folder
+  'imgslide/5.jpg',
+
+  // 'imgslide/2.jpg',
+  // 'imgslide/2.jpg',
+];
 
 function ActivityImage() {
-  const [slides, setSlides] = useState<any[]>([]);
-
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycbz62Wga6uucBxz9qtAvizMCMVXTdqYPv7skQQA_FUE2Io1tqGH9ZbR-Ubl6tFzKzagw/exec');
-  
-        if (!response.ok) {
-          throw new Error('Failed to fetch images');
-        }
-  
-        const data = await response.json();
-        setSlides(data); // Make sure this matches your state management logic
-  
-      } catch (error) {
-        console.error('Error fetching images:', error);
-      }
-    };
-  
-    fetchImages();
-  }, []);
-  
   return (
     <Box
       sx={{
@@ -79,20 +68,20 @@ function ActivityImage() {
       </Box>
 
       <Box sx={{ display: 'grid', alignItems: 'center', justifyContent: 'center', zIndex: 21 }}>
-        <ImageSlider>
-          {slides.map((image: any, index: number) => (
+        {/* Pass the imagePaths to the CustomCarousel */}
+        <CustomCarousel>
+          {imagePaths.map((imagePath, index) => (
             <Box
-            key={index}
-            component="img"
-            src={image.url}
-            alt={image.name} // Use the name as alt text
-            style={{ width: '100%', height: 'auto', objectFit: 'cover' }} 
-        
-          />
-          
+              key={index}
+              component="img"
+              src={`./${imagePath}`} // Image path relative to the public folder
+              alt={`image-${index}`}
+              sx={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+            />
           ))}
-        </ImageSlider>
+        </CustomCarousel>
       </Box>
+
       <Box
         sx={{
           textAlign: 'center',
