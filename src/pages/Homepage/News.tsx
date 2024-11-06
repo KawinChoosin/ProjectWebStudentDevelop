@@ -8,9 +8,9 @@ import pic22 from './newsicon/sh.jpg';
 import pic33 from './newsicon/emf.jpg';
 
 const images = [
-  { src: pic11, alt: 'Image 4', text: 'พัฒนาคุณภาพนักศึกษาวิศวะ มช', hoverSrc: pic11, size: '200px', path: "https://www.facebook.com/StudentDevelopmentENG" },
-  { src: pic22, alt: 'Image 5', text: 'นักศึกษาทุนวิศวะ มช ', hoverSrc: pic22, size: '200px', path: "https://www.facebook.com/ScholarshipsENG" },
-  { src: pic33, alt: 'Image 6', text: 'Entaneer Mind Friend', hoverSrc: pic33, size: '200px', path: "https://www.facebook.com/@EntaneerMindFriendCMU" },
+  { src: pic11, alt: 'Image 4', text: 'พัฒนาคุณภาพ\nนักศึกษาวิศวะ มช', hoverSrc: pic11, size: '200px', path: "https://www.facebook.com/StudentDevelopmentENG" },
+  { src: pic22, alt: 'Image 5', text: 'นักศึกษาทุน\nวิศวะ มช ', hoverSrc: pic22, size: '200px', path: "https://www.facebook.com/ScholarshipsENG" },
+  { src: pic33, alt: 'Image 6', text: 'Entaneer\n Mind Friend', hoverSrc: pic33, size: '200px', path: "https://www.facebook.com/@EntaneerMindFriendCMU" },
 ];
 
 // const images1 = [
@@ -148,7 +148,7 @@ const News = () => {
                 lg: "40px 50px",
               },
               padding: '40px 0',
-              width: '80%',
+              width: '85%',
               maxWidth: '1100px',
               '@media (max-width: 700px)': {
                 gridTemplateColumns: 'repeat(3, 1fr)',
@@ -175,14 +175,14 @@ const News = () => {
              href={image.path}
              style={{ textDecoration: 'none', display: 'block', width: '100%', height: '100%' }} // Make the link cover the entire card
            >
-             <Grid container spacing={2} alignItems="center">
+             <Grid container  alignItems="center">
                {/* Image Section (Grid item with 8 columns) */}
                <Grid item xs={7} sm={8} md={8} lg={8} sx={{ display: 'flex', justifyContent: 'center' }}>
                  <Button
                    variant="contained"
                    sx={{
-                     width: { xs: '120px', sm: '120px', md: '150px', lg: '220px' },
-                     height: { xs: '120px', sm: '120px', md: '150px', lg: '220px' },
+                     width: { xs: '130px', sm: '120px', md: '150px', lg: '220px' },
+                     height: { xs: '130px', sm: '120px', md: '150px', lg: '220px' },
                      color: 'white',
                      display: 'flex',
                      justifyContent: 'center',
@@ -211,27 +211,28 @@ const News = () => {
                </Grid>
          
                {/* Text Section (Grid item with 4 columns) */}
-               <Grid item xs={4} sm={4} md={4} lg={4}>
-                 <Typography
-                   variant="body2"
-                   sx={{
-                     fontSize: {
-                       xs: "14px",
-                       sm: "14px",
-                       md: "18px",
-                       lg: "22px",
-                     },
-                     fontWeight: 600,
-                     color: '#5B171E',
-                     fontFamily: 'Prompt',
-                     textAlign: 'center',
-                     whiteSpace: 'normal', // Allows text to wrap
-                     maxWidth: '90%',      // Controls line length for better wrapping
-                     wordBreak: 'break-word',
-                   }}
-                 >
-                   {image.text}
-                 </Typography>
+               <Grid item xs={5} sm={4} md={4} lg={4}>
+               <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: {
+                      xs: "14px",
+                      sm: "14px",
+                      md: "18px",
+                      lg: "22px",
+                    },
+                    fontWeight: 600,
+                    color: '#5B171E',
+                    fontFamily: 'Prompt',
+                    textAlign: 'center',
+                    whiteSpace: 'pre-line', // Interpret \n as line breaks
+                    maxWidth: '90%',      // Controls line length for better wrapping
+                    wordBreak: 'break-word',
+                  }}
+                >
+                  {image.text}
+                </Typography>
+
                </Grid>
              </Grid>
            </a>
@@ -246,141 +247,7 @@ const News = () => {
           </Box>
           
         </Box>
-        {/* <Box sx={{display:'flex',justifyContent:'center'}}>
-
-    
-        <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: {
-                xs: 2,
-                sm: "30px 0px",
-                md: "30px 0px",
-                lg: "40px 50px",
-              },
-              padding: '40px 0',
-              width: '100%',
-              maxWidth: '1100px',
-              '@media (max-width: 700px)': {
-                gridTemplateColumns: 'repeat(3, 1fr)',
-              },
-              '@media (max-width: 600px)': {
-                gridTemplateColumns: 'repeat(3, 1fr)',
-              },
-            }}
-          >
-            {images.map((image, index) => (
-              <Box key={index} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: "100%", height: "100%", justifyItems: "center" }}>
-                <Button
-                  variant="contained"
-                  href={image.path}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  sx={{
-                    width: { xs: '100px', sm: '120px', md: '150px', lg: '220px' },
-                    height: { xs: '100px', sm: '120px', md: '150px', lg: '220px' },
-                    color: 'white',
-                    fontFamily: 'Prompt',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: 0,
-                    position: 'relative',
-                    overflow: 'hidden',
-                    borderRadius: '200%',
-                    // Darker shadow for normal state
-                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
-                    transform: hoveredIndex === index ? 'scale(1.1)' : 'scale(1)',
-                    transition: 'all 0.3s ease',
-                    // On hover, apply stronger shadow
-                    '&:hover': {
-                      boxShadow: '0 8px 20px rgba(187, 0, 32, 0.7)',
-                    },
-                  }}
-                >
-                  <img
-                    src={hoveredIndex === index ? image.hoverSrc : image.src}
-                    alt={image.alt}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: '50%',
-                      objectFit: 'cover',
-                      transition: '0.3s ease',
-                    }}
-                  />
-                </Button>
-
-                <Typography
-                  variant="body2"
-                  sx={{
-                    marginTop: '20px',
-                    fontSize: {
-                      xs: "14px",
-                      sm: "14px",
-                      md: "18px",
-                      lg: "22px",
-                    },
-                    fontWeight: 600,
-                    color: '#5B171E',
-                    fontFamily: 'Prompt',
-                    textAlign: 'center',
-                    mb:4,
-                  }}
-                >
-                  {image.text}
-                </Typography>
-              </Box>
-            ))}
-          
-          </Box>
-
-          </Box> */}
-        {/* <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-  {images1.map((image, index) => (
-    <Box key={index} sx={{
-      display: 'flex',
-      flexDirection: 'column', // Align items in a column (vertically)
-      alignItems: 'center', // Center align items horizontally
-      width: "100%",  // Ensure it takes full width of the parent container
-      height: "100%", // Ensure it takes full height of the parent container
-      justifyItems: "center",
-      marginBottom: 2,  // Add margin between items
-    }}>
-      <Button
-        variant="contained"
-        onMouseEnter={() => setHoveredIndex(index)}  // Set the hovered index to trigger scale effect
-        onMouseLeave={() => setHoveredIndex(null)}   // Reset the hovered index
-        sx={{
-          width: "60%", // Fixed width for the button
-          height: "60%", // Fixed height for the button
-          padding: 0,
-          position: 'relative',
-          overflow: 'hidden', // Hide anything that overflows the square area
-          borderRadius: 0, // Keep it square (no rounded corners)
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)', // Shadow for normal state
-          '&:hover': {
-            boxShadow: '0 8px 20px rgba(187, 0, 32, 0.7)', // Stronger shadow on hover
-          },
-        }}
-      >
-        <img
-          src={hoveredIndex === index ? image.hoverSrc : image.src}
-          alt={image.alt}
-          style={{
-            width: '100%',  // Make the image fill the button width
-            height: '100%', // Make the image fill the button height
-            objectFit: 'contain', // Preserve the aspect ratio and make the image fit inside the square
-            transition: 'transform 0.3s ease',  // Smooth transition for scaling
-            transform: hoveredIndex === index ? 'scale(1.1)' : 'scale(1)', // Scale effect on hover
-          }}
-        />
-      </Button>
-    </Box>
-  ))}
-</Box> */}
-
+       
         </Box>
       )}
     </Box>
