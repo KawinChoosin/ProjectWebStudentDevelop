@@ -59,7 +59,7 @@ const News = () => {
   // Handle screen size changes
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 450); // Update state if screen width is less than 450px
+      setIsMobile(window.innerWidth < 450 && window.innerHeight<900 || window.innerWidth < 900 && window.innerHeight<450); // Update state if screen width is less than 450px
     };
 
     window.addEventListener('resize', handleResize);
@@ -224,7 +224,7 @@ const News = () => {
                      fontWeight: 600,
                      color: '#5B171E',
                      fontFamily: 'Prompt',
-                     textAlign: 'left',
+                     textAlign: 'center',
                      whiteSpace: 'normal', // Allows text to wrap
                      maxWidth: '90%',      // Controls line length for better wrapping
                      wordBreak: 'break-word',

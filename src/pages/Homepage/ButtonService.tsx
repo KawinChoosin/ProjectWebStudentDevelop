@@ -19,10 +19,10 @@ import IC88 from "./PicIcon/88.png";
 
 const images = [
   { src: IC1, alt: 'Image 1', text: 'งานทุนการศึกษา', hoverSrc: IC11, size: '200px', path: "/scholarship" },
-  { src: IC2, alt: 'Image 2', text: 'งานส่งเสริมกิจกรรมนักศึกษา', hoverSrc: IC22, size: '200px', path: "/activities" },
+  { src: IC2, alt: 'Image 2', text: 'งานส่งเสริมกิจกรรม\nนักศึกษา', hoverSrc: IC22, size: '200px', path: "/activities" },
   { src: IC3, alt: 'Image 3', text: 'งานวินัยนักศึกษา', hoverSrc: IC33, size: '200px', path: "/discipline" },
-  { src: IC4, alt: 'Image 4', text: 'งานให้คำปรึกษาและดูแลสุขภาพจิต', hoverSrc: IC44, size: '200px', path: "/entaneermind" },
-  { src: IC5, alt: 'Image 5', text: 'สวัสดิการสุขภาพนักศึกษา', hoverSrc: IC55, size: '200px', path: "/welfare" },
+  { src: IC4, alt: 'Image 4', text: 'งานให้คำปรึกษาและ\nดูแลสุขภาพจิต', hoverSrc: IC44, size: '200px', path: "/entaneermind" },
+  { src: IC5, alt: 'Image 5', text: 'สวัสดิการสุขภาพ\nนักศึกษา', hoverSrc: IC55, size: '200px', path: "/welfare" },
   { src: IC6, alt: 'Image 6', text: 'จองสถานที่', hoverSrc: IC66, size: '200px', path: "/reserve-place" },
   { src: IC7, alt: 'Image 7', text: 'หนังสือรับรอง', hoverSrc: IC77, size: '200px', path: "/certificate" },
   { src: IC8, alt: 'Image 8', text: 'Entaneer Upskill', hoverSrc: IC88, size: '200px', path: "/entaneer-upskill" },
@@ -31,7 +31,6 @@ const images = [
 function ButtonService() {
   // State to track hovered index for dynamic image change
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
 
   useEffect(() => {
     // Preload hover images
@@ -97,7 +96,6 @@ function ButtonService() {
           padding: '40px 0',
           width: '90%',
           maxWidth: '1100px',
-          
           '@media (max-width: 700px)': {
             gridTemplateColumns: 'repeat(3, 1fr)',
           },
@@ -115,15 +113,15 @@ function ButtonService() {
               onMouseLeave={() => setHoveredIndex(null)}
               sx={{
                 width: {
-                  xs: '120px',
-                  sm: '140px',
-                  md: '170px',
+                  xs: '140px',
+                  sm: '160px',
+                  md: '175px',
                   lg: '240px',
                 },
                 height: {
-                  xs: '120px',
-                  sm: '140px',
-                  md: '170px',
+                  xs: '140px',
+                  sm: '160px',
+                  md: '175px',
                   lg: '240px',
                 },
                 color: 'white',
@@ -160,15 +158,15 @@ function ButtonService() {
                   xs: "13px",
                   sm: "14px",
                   md: "18px",
-                  lg: "22px",
+                  lg: "20px",
                 },
                 fontWeight: 700,
                 color: '#5B171E',
                 fontFamily: 'Prompt',
                 textAlign: 'center',
-                whiteSpace: 'normal', // Allows text to wrap
-                maxWidth: '80%',      // Controls line length for better wrapping
-                wordBreak: 'break-word', // Ensures long words break properly if needed
+                whiteSpace: 'pre-line',  // This ensures that '\n' creates line breaks
+                maxWidth: '80%',          // Controls line length for better wrapping
+                wordBreak: 'break-word',  // Ensures long words break properly if needed
               }}
             >
               {image.text}

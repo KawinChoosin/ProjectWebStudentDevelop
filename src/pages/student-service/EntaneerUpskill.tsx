@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Card } from '@mui/material';
 import Navbar from '../../component/Navbar';
 import Footer from '../../component/Footer'; 
 import "../../component/text.css";
@@ -22,8 +22,9 @@ function EntaneerUpskill() {
                     Entaneer Upskill
                   </div>
                   <Box sx={{ borderBottom: '3px solid #801111', marginBottom: '40px', width: '40%' }}></Box>
+                  <Card>
                   <img src={pic1} alt="" style={{marginTop:"20px",height:"100%",width:"100%"}} />
-                  
+                  </Card>
                   
                   <Box 
                       sx={{

@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Card, CardMedia } from '@mui/material';
 import Navbar from '../../component/Navbar';
 import Footer from '../../component/Footer'; 
 import "../../component/text.css";
@@ -27,16 +27,13 @@ function Activity() {
         </div>
 
         {/* Add the image here */}
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '30px', marginBottom: '40px' }}>
-          <img 
-            src={image1} 
-            alt="Activity" 
-            style={{
-              maxWidth: '100%', // Ensures the image doesn't exceed its container width
-              height: 'auto',    // Keeps the aspect ratio intact
-              borderRadius: '8px' // Optional: adds a small border radius for rounded corners
-            }} 
-          />
+       
+   
+        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: '40px' }}>
+        <Card sx={{ height: "100%"}}>
+            <CardMedia component="img" image={image1} alt="Activity"  />
+        </Card>
+
         </Box>
 
         {/* Second divider */}

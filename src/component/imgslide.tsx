@@ -103,15 +103,15 @@ function CustomCarousel({ children }: CustomCarouselProps) {
                 sx={{
                   width: "100%",
                
-                 maxHeight: {
-                      xs: "160px",  // Extra-small screens
+                 height: {
+                      xs: "180px",  // Extra-small screens
                       sm: "240px",  // Small screens
-                      md: "300px",  // Medium screens
+                      md: "320px",  // Medium screens
                       lg: "460px",  // Large screens
-                      xl: "490px",  // Extra-large screens
+                      xl: "480px",  // Extra-large screens
                     },
                   maxWidth: '1920px',
-                  objectFit: "contain",
+                  objectFit: "scale-down",
                   zIndex: 1,
                 }}
               />

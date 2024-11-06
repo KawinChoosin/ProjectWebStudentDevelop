@@ -1,5 +1,5 @@
 
-import { Box } from '@mui/material';
+import { Box, Card } from '@mui/material';
 import Navbar from '../../component/Navbar';
 import Footer from '../../component/Footer'; 
 import "../../component/text.css";
@@ -43,11 +43,11 @@ function EntaneerMind() {
               <div className="text-detail-indent" >
               + เผยแพร่ความรู้ผ่านการจัดสัมมนาเชิงปฏิบัติการ การผลิตบทความเผยแพร่ผ่านFacebook และการไลฟ์สดพูดคุยผ่านFacebook:Entaneer Mind Friend
               </div>
-              <Box  sx={{ display: 'flex', justifyContent: 'center', marginBottom: '4%' }}>
+              <Card  sx={{ display: 'flex', justifyContent: 'center', marginBottom: '4%' }}>
                   <a href="https://www.facebook.com/EntaneerMindFriendCMU" > 
                     <img src={pic1}  style={{ maxWidth: '100%', height: 'auto' }} />
                   </a>
-              </Box>
+              </Card>
               <Box 
                   sx={{
                     borderBottom: '4px solid #801111',
