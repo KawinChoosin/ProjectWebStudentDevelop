@@ -116,19 +116,19 @@ function Navbar({ status }: NavbarProps) {
   };
 
   const topics = {
-    aboutUs: { name: 'เกี่ยวกับเรา', href: '/aboutus' },
+    aboutUs: { name: 'เกี่ยวกับเรา', href: '/aboutus_ad' },
     studentServices: {
       name: 'บริการนักศึกษา',
       href: '#',
       subtopics: [
-        { name: 'งานทุนการศึกษา', href: '/scholarship' },
-        { name: 'งานส่งเสริมกิจกรรมนักศึกษา', href: '/activities' },
-        { name: 'งานวินัยนักศึกษา', href: '/discipline' },
-        { name: 'งานให้คำปรึกษาและดูแลสุขภาพจิต', href: '/entaneermind' },
-        { name: 'สวัสดิการสุขภาพนักศึกษา', href: '/welfare' },
-        { name: 'Entaneer Upskill', href: '/entaneer-upskill' },
-        { name: 'จองสถานที่', href: '/reserve-place' },
-        { name: 'หนังสือรับรอง', href: '/certificate' },
+        { name: 'งานทุนการศึกษา', href: '/scholarship_ad' },
+        { name: 'งานส่งเสริมกิจกรรมนักศึกษา', href: '/activities_ad' },
+        { name: 'งานวินัยนักศึกษา', href: '/discipline_ad' },
+        { name: 'งานให้คำปรึกษาและดูแลสุขภาพจิต', href: '/entaneermind_ad' },
+        { name: 'สวัสดิการสุขภาพนักศึกษา', href: '/welfare_ad' },
+        { name: 'Entaneer Upskill', href: '/entaneer-upskill_ad' },
+        { name: 'จองสถานที่', href: '/reserve-place_ad' },
+        { name: 'หนังสือรับรอง', href: '/certificate_ad' },
       ],
     },
     ejs: {
@@ -175,7 +175,7 @@ function Navbar({ status }: NavbarProps) {
             
               <Box sx={dropdownHambergerStyles}>
               {/* All the topics from the full menu */}
-              <Button sx={[dropdownItemStyles, { width: '100%', height: '40px' ,}]} component="a" href="/aboutus">เกี่ยวกับเรา</Button>
+              <Button sx={[dropdownItemStyles, { width: '100%', height: '40px' ,}]} component="a" href="/aboutus_ad">เกี่ยวกับเรา</Button>
               
       
               {/* Dropdown for บริการนักศึกษา */}
@@ -222,14 +222,14 @@ function Navbar({ status }: NavbarProps) {
                 )}
               </Box>
               <Button sx={[dropdownItemStyles, { width: '100%', height: '40px' }]} component="a" href="/executive_ad">ผู้บริหาร/บุคลากร</Button>
-              <Button sx={[dropdownItemStyles, { width: '100%', height: '40px' }]} component="a" href="/announcements">ประกาศ/ข้อบังคับ/ระเบียบ</Button>
+              <Button sx={[dropdownItemStyles, { width: '100%', height: '40px' }]} component="a" href="/announcements_ad">ประกาศ/ข้อบังคับ/ระเบียบ</Button>
             </Box>
             )}
         </>
       ) : (
         <Box sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
           <Box sx={{ position: 'relative' }}>
-            <Button sx={dropdownButtonStyles} href="/aboutus">เกี่ยวกับเรา</Button>
+            <Button sx={dropdownButtonStyles} href="/aboutus_ad">เกี่ยวกับเรา</Button>
           </Box>
           <Box
             sx={{ position: 'relative' }}
@@ -288,10 +288,10 @@ function Navbar({ status }: NavbarProps) {
             )}
           </Box>
           <Box sx={{ position: 'relative' }}>
-            <Button sx={dropdownButtonStyles} href="/executive">ผู้บริหาร/บุคลากร</Button>
+            <Button sx={dropdownButtonStyles} href="/executive_ad">ผู้บริหาร/บุคลากร</Button>
           </Box>
           <Box sx={{ position: 'relative' }}>
-            <Button sx={dropdownButtonStyles} href="/announcements">ประกาศ/ข้อบังคับ/ระเบียบ</Button>
+            <Button sx={dropdownButtonStyles} href="/announcements_ad">ประกาศ/ข้อบังคับ/ระเบียบ</Button>
           </Box> 
           
         </Box>

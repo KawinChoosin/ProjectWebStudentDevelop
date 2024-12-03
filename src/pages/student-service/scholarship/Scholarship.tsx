@@ -24,7 +24,23 @@ function Scholarship() {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', backgroundColor: 'white' }}>
             <Navbar status={false} />
-            <Box sx={{ display: "flex", flexDirection: "column", width: "100%", maxWidth: { xs: "370px", sm: "700px", md: "800px", lg: "1000px" }, marginTop: "125px", padding: "20px", boxSizing: "border-box", color: "#333" }}>
+
+           <Box
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    maxWidth: { xs: "370px", sm: "700px", md: "800px", lg: "1200px" },
+    marginTop: "125px",
+    padding: "40px",
+    boxSizing: "border-box",
+    color: "#333",
+    border: "1px solid #ccc", // Border line
+    boxShadow: "0px 4px 80px rgba(0, 0, 0, 0.6)", // Shadow
+    borderRadius: "8px", // Optional rounded corners
+    
+  }}
+>
                 <div className="text-topic" style={{ marginTop: "10%" }}>งานทุนการศึกษา</div>
 
                 <Box sx={{ borderBottom: '3px solid #801111', marginBottom: '40px', width: '40%' }}></Box>

@@ -76,6 +76,7 @@ function Footer() {
         alignItems: 'flex-start',
         justifyContent: 'space-between',
         zIndex: 10,
+
       }}
     >
       <Grid container spacing={2}>

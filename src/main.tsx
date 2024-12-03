@@ -21,8 +21,8 @@ import Form from './pages/Admin/Formpage/UploadPage';
 import Textrich from './pages/Admin/Test/textrich';
 import Admin from './pages/Admin/admin';
 import Executive_ad from './pages/Admin/Executive/Executive';
-
-
+import Company_ad from './pages/Admin/company/company';
+import Company_detail from './pages/EJS/Companydetail';
 const rootElement = document.getElementById('root') as HTMLElement;
 const root = createRoot(rootElement);
 
@@ -45,11 +45,12 @@ root.render(
         <Route path="/apply-job" element={<JobSearch />} />
         <Route path="/external-jobs" element={<ExternalJobs />} />
         <Route path="/announcements" element={<Announcements />} />
-        
+        <Route path="/apply-job/:id" element={<Company_detail />} />
       
       
         <Route path="/admin" element={<Admin />} />
         <Route path="/executive_ad" element={<Executive_ad />} />
+        <Route path="/company_ad" element={<Company_ad />} />
         <Route path="/form" element={<Form />} />
         <Route path="/test" element={<Textrich />} />
       </Routes>

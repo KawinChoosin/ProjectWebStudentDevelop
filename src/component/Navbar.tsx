@@ -68,13 +68,13 @@ function Navbar({ status }: NavbarProps) {
     borderRadius: '0px',
     width:"100%",
     ...(studentServicesDropdownOpen && {
-      maxHeight: '500px', // Adjust based on content height
+      maxHeight: '800px', // Adjust based on content height
       backgroundColor: '#C33443',
   
     }),
     
     ...(ejsDropdownOpen && {
-      maxHeight: '500px', // Adjust based on content height
+      maxHeight: '800px', // Adjust based on content height
       backgroundColor: '#C33443',
 
     }),

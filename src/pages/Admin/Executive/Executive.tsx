@@ -1,5 +1,5 @@
 
-import Navbar from '../../../component/Navbar';
+
 import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import img1 from './Pic_exe/1.jpg'; // Ensure this path is correct
 import img2 from './Pic_exe/2.jpg';
@@ -8,6 +8,7 @@ import img4 from './Pic_exe/4.jpg';
 import img5 from './Pic_exe/5.jpg'; // Ensure this path is correct
 import img6 from './Pic_exe/6.jpg';
 import img7 from './Pic_exe/7.jpg';
+import Navbar from '../../../component/Navbar';
 import Footer from '../../../component/Footer';
 
 const cardData = [

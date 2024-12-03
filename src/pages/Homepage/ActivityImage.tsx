@@ -1,21 +1,28 @@
 // @ts-ignore
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import CustomCarousel from '../../component/imgslide'; // Assuming CustomCarousel is in this path
+import axios from 'axios';
 
-// Define the list of image paths in the public/imgslide folder
-const imagePaths = [
-  'imgslide/1.jpg', // Image path relative to the public folder
-  'imgslide/2.png',
-  'imgslide/3.jpg',
-  'imgslide/4.jpg', // Image path relative to the public folder
-  'imgslide/5.jpg',
-
-  // 'imgslide/2.jpg',
-  // 'imgslide/2.jpg',
-];
 
 function ActivityImage() {
+  const [imagedata,setImagedata] = useState([]);
+
+  useEffect(() => {
+    const fetchImageSlides = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/imgslide/show`);
+        setImagedata(response.data.data)
+        // console.log(imagedata)
+      } catch (error) {
+        console.error('Error fetching image slides:', error);
+      }
+    };
+  
+    fetchImageSlides();
+  }, [imagedata]);
+  
+
   return (
     <Box
       sx={{
@@ -70,11 +77,11 @@ function ActivityImage() {
       <Box sx={{ display: 'grid', alignItems: 'center', justifyContent: 'center', zIndex: 21 }}>
         {/* Pass the imagePaths to the CustomCarousel */}
         <CustomCarousel>
-          {imagePaths.map((imagePath, index) => (
+          {imagedata.map((image, index) => (
             <Box
               key={index}
               component="img"
-              src={`./${imagePath}`} // Image path relative to the public folder
+              src={`${image.imgPath}`} // Image path relative to the public folder
               alt={`image-${index}`}
               sx={{ width: '100%', height: 'auto', objectFit: 'cover' }}
             />

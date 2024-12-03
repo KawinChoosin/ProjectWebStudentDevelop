@@ -1,12 +1,23 @@
 {
-  "files": [],
+  "compilerOptions": {
+    "target": "ESNext",           // Ensure you're using ESNext for modern features
+    "module": "ESNext",           // Ensure the module system supports dynamic imports
+    "moduleResolution": "Node",   // Use Node-style module resolution
+    "lib": ["DOM", "ESNext"],     // Include DOM and ESNext features
+    "types": ["vite/client"],     // Add Vite types for import.meta.env
+    "jsx": "react-jsx",           // If you're using React, ensure JSX support
+    "strict": true,               // Enable strict type checking (recommended)
+    "esModuleInterop": true,      // Ensure ES module interop
+    "skipLibCheck": true          // Optional, but can speed up builds
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts"
+  ],
   "references": [
     {
-      "path": "./tsconfig.app.json"
-    },
-    {
       "path": "./tsconfig.node.json"
-    },
-    
+    }
   ]
 }

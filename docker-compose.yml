@@ -33,23 +33,23 @@ services:
       - ./BackendPT:/app
       - /app/node_modules
 
-  # frontend:
-  #   container_name: puttana_frontend
-  #   build:
-  #     context: .  
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "${FrontendPORT}:5173"
-  #   networks:
-  #     - puttana
-  #   depends_on:
-  #     - backend
-  #   environment:
-  #     - CHOKIDAR_USEPOLLING=true
-  #     - VITE_HOST=0.0.0.0
-  #   volumes:
-  #     - .:/usr/src/app
-  #     - /usr/src/app/node_modules
+  frontend:
+    container_name: puttana_frontend
+    build:
+      context: .  
+      dockerfile: Dockerfile
+    ports:
+      - "${FrontendPORT}:5173"
+    networks:
+      - puttana
+    depends_on:
+      - backend
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - VITE_HOST=0.0.0.0
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
 
 volumes:
   db_puttana:

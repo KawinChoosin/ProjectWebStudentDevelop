@@ -19,10 +19,11 @@ const App = () => {
     >
       <Navbar status={true} />
       <Mainpic />
-      <Box sx={{height:{xs:"600px",sm:"800px"}}}></Box>
+      <Box sx={{height:{xs:"1000px",sm:"1000px"}}}></Box>
       <ButtonService />
       <ActivityImage />
       <News />
+    
       <Footer />
     </div>
   );

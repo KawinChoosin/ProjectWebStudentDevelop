@@ -11,8 +11,8 @@ COPY package*.json ./
 RUN npm install
 
 # Copy Prisma schema and generate Prisma client for Linux environment
-# COPY prisma ./prisma
-# RUN npx prisma generate
+COPY prisma ./prisma
+RUN npx prisma generate
 
 # Copy the rest of the application code
 COPY . .
