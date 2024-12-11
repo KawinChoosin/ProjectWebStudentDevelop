@@ -51,10 +51,12 @@ model Company {
   C_pic             String
   C_detail          String
   status            Boolean           @default(false)
-  C_companyMajor    CompanyMajor[] // Relation to the join table
-  C_companyWorkType CompanyWorkType[]
-  Page              Page              @relation(fields: [P_id], references: [P_id], name: "PageToCompany")
+  C_companyMajor    String[] // Relation to the join table
+  C_companyWorkType String[]
+  // Page              Page              @relation(fields: [P_id], references: [P_id], name: "PageToCompany")
   Address           Address[]         @relation(name: "AddressToCompany")
+
+  Page Page[] @relation(name: "PageToCompany")
 }
 
 model Address {
@@ -71,37 +73,35 @@ model Address {
   Company      Company @relation(fields: [C_id], references: [C_id], name: "AddressToCompany")
 }
 
-model Major {
-  M_id         Int            @id @default(autoincrement())
-  M_name       String
-  CompanyMajor CompanyMajor[] // Relation to the join table
-}
+// model Major {
+//   M_id         Int            @id @default(autoincrement())
+//   M_name       String
+//   CompanyMajor CompanyMajor[] // Relation to the join table
+// }
 
-model Worktype {
-  WT_id           Int               @id @default(autoincrement())
-  WT_name         String
-  CompanyWorkType CompanyWorkType[] // Relation to the join table
-}
+// model Worktype {
+//   WT_id           Int               @id @default(autoincrement())
+//   WT_name         String
+//   CompanyWorkType CompanyWorkType[] // Relation to the join table
+// }
 
-model CompanyMajor {
-  CM_id     Int
-  M_id      Int
-  CM_select Boolean
-  Company   Company @relation(fields: [CM_id], references: [C_id]) // Corrected reference to C_id
-  Major     Major   @relation(fields: [M_id], references: [M_id]) // Corrected reference to M_id
+// model CompanyMajor {
+//   CM_id     Int
+//   M_id      Int
+//   Company   Company @relation(fields: [CM_id], references: [C_id]) // Corrected reference to C_id
+//   Major     Major   @relation(fields: [M_id], references: [M_id]) // Corrected reference to M_id
 
-  @@id([CM_id, M_id]) // Composite primary key
-}
+//   @@id([CM_id, M_id]) // Composite primary key
+// }
 
-model CompanyWorkType {
-  CWT_id     Int
-  WT_id      Int
-  CWT_select Boolean
-  Company    Company  @relation(fields: [CWT_id], references: [C_id]) // Corrected reference to C_id
-  Worktype   Worktype @relation(fields: [WT_id], references: [WT_id]) // Corrected reference to M_id
+// model CompanyWorkType {
+//   CWT_id     Int
+//   WT_id      Int
+//   Company    Company  @relation(fields: [CWT_id], references: [C_id]) // Corrected reference to C_id
+//   Worktype   Worktype @relation(fields: [WT_id], references: [WT_id]) // Corrected reference to M_id
 
-  @@id([WT_id, CWT_id]) // Composite primary key
-}
+//   @@id([WT_id, CWT_id]) // Composite primary key
+// }
 
 model Image {
   IMG_id  Int     @id @default(autoincrement())

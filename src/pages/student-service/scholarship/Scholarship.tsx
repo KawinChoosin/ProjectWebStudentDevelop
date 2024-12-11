@@ -1,4 +1,4 @@
-import { Box, Card, CardMedia,Grid } from '@mui/material';
+import { Box, Card, CardMedia } from '@mui/material';
 import Navbar from '../../../component/Navbar';
 import Footer from '../../../component/Footer'; 
 import "../../../component/text.css";
@@ -12,7 +12,7 @@ import pic8 from "./pic/ทุนประกวดผลงานทางว�
 import pic4 from "./pic/ทุนวิศวฯ ปัญญาเลิศ.png";
 import pic9 from "./pic/ทุนปโท.png";
 import pic10 from "./pic/contact.png";
-
+import Grid from '@mui/material/Grid2';
 
 const ScholarshipCard = ({ image, title }: { image: string; title: string; }) => (
     <Card sx={{ height: {lg:'550px',md:'450px',sm:'420px'} }}>
@@ -30,17 +30,14 @@ function Scholarship() {
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    maxWidth: { xs: "370px", sm: "700px", md: "800px", lg: "1200px" },
+    maxWidth: { xs: "370px", sm: "700px", md: "800px", lg: "1000px" },
     marginTop: "125px",
     padding: "40px",
     boxSizing: "border-box",
     color: "#333",
-    border: "1px solid #ccc", // Border line
-    boxShadow: "0px 4px 80px rgba(0, 0, 0, 0.6)", // Shadow
-    borderRadius: "8px", // Optional rounded corners
-    
   }}
 >
+            <Card sx={{pl:'7%',pr:'7%',border: "1px solid #ccc",boxShadow: "0px 4px 24px rgba(0, 0, 0, 0.5)"}}>
                 <div className="text-topic" style={{ marginTop: "10%" }}>งานทุนการศึกษา</div>
 
                 <Box sx={{ borderBottom: '3px solid #801111', marginBottom: '40px', width: '40%' }}></Box>
@@ -65,16 +62,19 @@ function Scholarship() {
                         { image: pic9, title: 'ทุนการศึกษาสำหรับผู้มีผลการเรียนดีเยี่ยมเพื่อศึกษาต่อปริญญาโท' },
                         { image: pic10, title: 'ช่องทางการติดต่อ' },
                     ].map((scholarship, index) => (
-                        <Grid item xs={12} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <Grid size={12} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
                             <ScholarshipCard image={scholarship.image} title={scholarship.title} />
                         </Grid>
                     ))}
                 </Grid>
                 <div className="text-bold">2.ทุนการศึกษาจากหน่วยงานภายนอก</div>
                 <div className="text-detail-indent"> หมายถึงทุนการศึกษาที่ใช้งบประมาณบริจาคจากมูลนิธิ บริษัท ห้าง ร้าน สมาคมนักศึกษาเก่าคณะวิศวกรรมศาสตร์และผู้มีจิตศรัทธาที่บริจาคสนับสนุนการศึกษาแก่นักศึกษาคณะวิศวกรรมศาสตร์ จัดสรรให้แก่นักศึกษาที่ขาดแคลนทุนทรัพย์ นักศึกษาที่มีผลการเรียนดี และนักศึกษาที่ทำกิจกรรมวิชาการกิจกรรมเสริมหลักสูตร กิจกรรมกีฬา ตามความประสงค์ของผู้บริจาค </div>
-            </Box>
+            
             <Box sx={{ textAlign: 'center', marginTop: '20px', marginBottom: '10px', height: '100px', width: '100%', position: 'relative' }}>
                 <Box sx={{ position: 'absolute', bottom: '50%', left: '50%', width: '30%', height: '5px', backgroundColor: '#b00020', transform: 'translateX(-50%)' }} />
+            
+            </Box>
+            </Card>
             </Box>
             <Footer />
         </div>

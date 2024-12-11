@@ -17,7 +17,6 @@ import CareerDay from './pages/EJS/Careerday';
 import JobSearch from './pages/EJS/FindJob';
 import ExternalJobs from './pages/EJS/GetJob';
 import Announcements from './pages/Announcements/Announcement';
-import Form from './pages/Admin/Formpage/UploadPage';
 import Textrich from './pages/Admin/Test/textrich';
 import Admin from './pages/Admin/admin';
 import Executive_ad from './pages/Admin/Executive/Executive';
@@ -51,7 +50,7 @@ root.render(
         <Route path="/admin" element={<Admin />} />
         <Route path="/executive_ad" element={<Executive_ad />} />
         <Route path="/company_ad" element={<Company_ad />} />
-        <Route path="/form" element={<Form />} />
+
         <Route path="/test" element={<Textrich />} />
       </Routes>
     </Router>

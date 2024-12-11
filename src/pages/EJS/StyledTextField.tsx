@@ -6,10 +6,13 @@ interface StyledTextFieldProps {
   label: string;
   name: string;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   error?: boolean;
   helperText?: string;
-  sx?: SxProps; // Allow custom styles if needed
+  sx?: SxProps;
+  multiline?: boolean; // Add support for multiline input
+  rows?: number; // Add support for specifying the number of rows
+  defaultValue?: string; // Add support for default value
 }
 
 const StyledTextField: React.FC<StyledTextFieldProps> = ({
@@ -21,10 +24,13 @@ const StyledTextField: React.FC<StyledTextFieldProps> = ({
   error = false,
   helperText = '',
   sx = {},
+  multiline = false,
+  rows = 1,
+  defaultValue = '', // Provide default value if needed
 }) => {
-  const [focused, setFocused] = useState(false); // Track focus state
+  const [focused, setFocused] = useState(false);
 
-  const isShrink = focused || value !== ''; // Check if label should shrink
+  const isShrink = focused || value !== '';
 
   return (
     <TextField
@@ -39,6 +45,9 @@ const StyledTextField: React.FC<StyledTextFieldProps> = ({
       fullWidth
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
+      multiline={multiline} // Support multiline input
+      rows={multiline ? rows : undefined} // Set rows if multiline is enabled
+      defaultValue={defaultValue} // Set default value if provided
       sx={{
         '& .MuiOutlinedInput-root': {
           borderRadius: '30px',
@@ -51,9 +60,15 @@ const StyledTextField: React.FC<StyledTextFieldProps> = ({
           borderRadius: '30px',
         },
         '& .MuiInputLabel-root': {
-          top: isShrink ? '-40%' : '0',
+          top: multiline
+          ? isShrink
+            ? '-25%'  // When multiline and isShrink is true
+            : '0'     // When multiline and isShrink is false
+          : isShrink
+          ? '-40%'    // When not multiline and isShrink is true
+          : '0', 
           left: isShrink ? 6 : 16,
-          fontSize: isShrink ? '16px' : '20px',
+          fontSize: isShrink ? {xs:'12px',sm:'16px'} : {xs:'16px',sm:'20px'},
           backgroundColor: isShrink ? '#fff' : 'transparent',
           padding: isShrink ? '0 4px' : '0',
           transition: 'all 0.2s ease',

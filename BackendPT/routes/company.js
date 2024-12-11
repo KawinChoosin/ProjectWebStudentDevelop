@@ -8,24 +8,60 @@ const fs = require('fs');
 const path = require('path');
 
 // Route to handle form data and image upload
-router.post('/create', upload.single('C_pic'), async (req, res) => {
+router.post('/create', upload.fields([
+  { name: 'C_pic', maxCount: 1 },
+  { name: 'C_logo', maxCount: 1 },
+]), async (req, res) => {
   try {
-    const { C_name, C_address, C_email, C_tel, C_detail, C_coordinate, P_id } = req.body;
-    const C_pic = req.file ? `/public/company/${req.file.filename}` : null;
+    const { C_name, C_salary, C_detail, P_id, C_major, C_worktype, C_address } = req.body;
 
-    // Insert form data into the database using Prisma
-    const company = await prisma.company.create({
+    const C_logo = req.files['C_logo'] ? `/public/company/${req.files['C_logo'][0].filename}` : null;
+    const C_pic = req.files['C_pic'] ? `/public/company/${req.files['C_pic'][0].filename}` : null;
+
+    // Validate that the P_id exists in the Page table
+    const pageExists = await prisma.Page.findUnique({
+      where: { P_id: parseInt(P_id) },
+    });
+
+    if (!pageExists) {
+      return res.status(400).json({
+        success: false,
+        message: `Invalid P_id: ${P_id}. No corresponding Page found.`,
+      });
+    }
+
+    // First, create the company
+    const company = await prisma.Company.create({
       data: {
-        P_id: parseInt(P_id),  // Convert P_id to integer
+        P_id: parseInt(P_id),
         C_name,
-        C_address,
-        C_email,
+        C_salary,
+        C_logo,
         C_pic,
-        C_tel,
         C_detail,
-        C_coordinate: C_coordinate || null 
+        C_companyMajor: C_major,
+        C_companyWorkType: C_worktype,
       }
     });
+
+    // Then, create associated addresses using the generated C_id
+    if (C_address && Array.isArray(C_address)) {
+      for (const addressData of C_address) {
+        await prisma.Address.create({
+          data: {
+            C_id: company.C_id, // Link to the created company
+            A_address: addressData.A_address,
+            A_subdist: addressData.A_subdist,
+            A_dist: addressData.A_dist,
+            A_province: addressData.A_province,
+            A_post: addressData.A_post,
+            A_email: addressData.A_email,
+            A_tel: addressData.A_tel,
+            A_coordinate: addressData.A_coordinate,
+          }
+        });
+      }
+    }
 
     res.status(201).json({ success: true, data: company });
   } catch (error) {
@@ -37,9 +73,9 @@ router.post('/create', upload.single('C_pic'), async (req, res) => {
 router.get('/data', async (req, res) => {
   try {
     // Fetch all companies from the database, sorted by index in ascending order
-    const companies = await prisma.company.findMany({
+    const companies = await prisma.Company.findMany({
       orderBy: {
-        index: 'asc',  // Sort by index in ascending order
+        C_index: 'asc',  // Sort by index in ascending order
       },
       include: {
         Page: true  // Optionally include related 'Page' data
@@ -58,11 +94,15 @@ router.get('/getcompany/:id', async (req, res) => {
 
   try {
     // Fetch the company by its ID from the database
-    const company = await prisma.company.findUnique({
+    const company = await prisma.Company.findUnique({
       where: {
-        id: parseInt(id, 10), // Ensure the ID is parsed as an integer
-        status: "PASS",
-      }
+        C_id: parseInt(id, 10), // Ensure the ID is parsed as an integer
+        status: true,
+      },
+      include: {
+        Page: true,      // Optionally include related 'Page' data
+        Address: true,   // Include related Address data
+      },
     });
 
     // Check if the company exists
@@ -80,15 +120,40 @@ router.get('/getcompany/:id', async (req, res) => {
 
 router.get('/WAIT', async (req, res) => {
   try {
-    const companies = await prisma.company.findMany({
+    // Fetch companies with related address data
+    const companies = await prisma.Company.findMany({
       where: {
-        status: 'WAIT',  // Correctly set the filter for the status field
+        status: false,  // Filter for companies where status is false
       },
       orderBy: {
-        index: 'asc',  // Sort by index in ascending order
+        C_index: 'asc',  // Sort by index in ascending order
       },
       include: {
-        Page: true,  // Optionally include related 'Page' data
+        Page: true,      // Optionally include related 'Page' data
+        Address: true,   // Include related Address data
+      },
+    });
+
+    res.status(200).json({ success: true, data: companies });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'An error occurred while fetching data.' });
+  }
+});
+
+
+router.get('/PASS', async (req, res) => {
+  try {
+    const companies = await prisma.Company.findMany({
+      where: {
+        status: true,  // Correctly set the filter for the status field
+      },
+      orderBy: {
+        C_index: 'asc',  // Sort by index in ascending order
+      },
+      include: {
+        Page: true,      // Optionally include related 'Page' data
+        Address: true,   // Include related Address data
       },
     });
     res.status(200).json({ success: true, data: companies });
@@ -98,22 +163,61 @@ router.get('/WAIT', async (req, res) => {
   }
 });
 
-router.get('/PASS', async (req, res) => {
+router.get('/showfillter', async (req, res) => {
   try {
-    const companies = await prisma.company.findMany({
-      where: {
-        status: 'PASS',  // Correctly set the filter for the status field
-      },
+    // Extract query parameters
+    const { majors, workTypes, search } = req.query;
+
+    // Build dynamic filters
+    const filters = {
+      status: true, // Only include active companies
+    };
+
+    // Add majors filter if provided
+    if (majors) {
+      const majorsArray = majors.split(','); // Convert comma-separated string to array
+      filters.C_companyMajor = {
+        hasEvery: majorsArray, // Use 'hasEvery' to match all provided majors
+      };
+    }
+
+    // Add workTypes filter if provided
+    if (workTypes) {
+      const workTypesArray = workTypes.split(','); // Convert comma-separated string to array
+      filters.C_companyWorkType = {
+        hasEvery: workTypesArray, // Use 'hasEvery' to match all provided work types
+      };
+    }
+
+    // Add search filter if provided
+    if (search) {
+      filters.C_name = {
+        contains: search, // Match C_name containing the search term
+        mode: 'insensitive', // Optional: Makes the search case-insensitive
+      };
+    }
+
+    // Query the database with the filters
+    const companies = await prisma.Company.findMany({
+      where: filters,
       orderBy: {
-        index: 'asc',  // Sort by index in ascending order
-      }
+        C_index: 'asc', // Sort by index in ascending order
+      },
+      include: {
+        Page: true,    // Optionally include related 'Page' data
+        Address: true, // Include related 'Address' data
+      },
     });
+
+    // Send the response
     res.status(200).json({ success: true, data: companies });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: 'An error occurred while fetching data.' });
   }
 });
+
+
 
 // router.get('/DELETE', async (req, res) => {
 //   try {

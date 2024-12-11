@@ -1,10 +1,11 @@
-import { Box } from '@mui/material';
+import { Box, Card } from '@mui/material';
 import Navbar from '../../component/Navbar';
 import Footer from '../../component/Footer'; 
 import "../../component/text.css";
 
 function Aboutus() {
     return (
+
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh', backgroundColor: 'white' }}>
             <Navbar status={false} />
             <Box sx={{
@@ -16,6 +17,7 @@ function Aboutus() {
                 padding: "20px",
                 color: "#333",
             }}>
+                <Card sx={{pl:'7%',pr:'7%',border: "1px solid #ccc",boxShadow: "0px 4px 24px rgba(0, 0, 0, 0.5)",}}>
                 <div className="text-topic" style={{ marginTop: "10%" }}>
                     วิสัยทัศน์/พันธกิจ
                 </div>
@@ -44,6 +46,7 @@ function Aboutus() {
                     marginX: 'auto', // Combines marginLeft and marginRight
                     textAlign: 'center', // Aligns text if any
                 }}></Box>
+                </Card>
             </Box>
             <Footer />
         </div>

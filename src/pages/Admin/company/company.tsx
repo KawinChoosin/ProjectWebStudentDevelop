@@ -1,21 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../../component/NavbarAdmin';
 import Footer from '../../../component/Footer';
-import { Box, Card, Typography, TextField, Button, Grid, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Alert, MenuItem, Select } from '@mui/material';
+import { Box, Card, Typography, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Alert, MenuItem, Select } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Badge from '@mui/material/Badge';
+import Grid from '@mui/material/Grid2'
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 interface Company {
-  id: number;
   C_name: string;
-  C_address: string;
-  C_email: string;
-  C_tel: string;
-  C_detail: string;
-  show_status: string;
+  C_salary: string;
+  C_logo: string;
   C_pic: string;
-  // Add other fields as necessary
+  C_detail: string;
+  C_address: Address[];
+  C_major: number[]; 
+  C_worktype: number[]; 
+}
+
+interface Address {
+  A_address: string;
+  A_subdist: string;
+  A_dist: string;
+  A_province: string;
+  A_post: string;
+  A_email: string;
+  A_tel: string;
+  A_coordinate: string;
+}
+
+interface AddressFormProps {
+  address: Address;
+  onAddressChange: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void;
+  index: number;
+  errors: any;
+}
+
+interface Major {
+  M_id: number; 
+}
+
+interface Worktype {
+  WT_id: number; 
 }
 
 
@@ -25,7 +54,27 @@ function Company() {
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('WAIT'); // Default status is 'WAIT'
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [selectedCompany, setSelectedCompany] = useState<Company | null>(null); // New state to store selected company
+  const [selectedCompany, setSelectedCompany] = useState<Company | null>({
+    C_name: '',
+    C_salary: '',
+    C_logo: '',
+    C_pic: '',
+    C_detail: '',
+    C_address: [
+      {
+        A_address: '',
+        A_subdist: '',
+        A_dist: '',
+        A_province: '',
+        A_post: '',
+        A_email: '',
+        A_tel: '',
+        A_coordinate: '',
+      },
+    ],
+    C_major: [],
+    C_worktype: []
+  });
   const [delopen,setDelopen] = useState(false);
   const [currentiddel,setCurrentiddel] = useState<number | null>(null);
   const [countpass,setCountpass] = useState<number | null>(null);
@@ -111,6 +160,7 @@ function Company() {
   // Fetch data on mount or when status changes
   useEffect(() => {
     fetchCompanyData(status);
+
   }, [status,companyData]);  // Dependency array ensures it refetches when status changes
   
   const handlechangeStatus = async (id: number, newStatus: string) => {
@@ -187,17 +237,15 @@ function Company() {
   const columns: GridColDef<(typeof rows)[number]>[] = [
     {
       field: 'actions',
-      headerName:  <Typography  sx={{ fontFamily: 'Prompt'}}>
-      MOVE
-    </Typography>,
+      headerName: <Typography sx={{ fontFamily: 'Prompt'}}>Move</Typography>,
       width: 230,
       
       renderCell: (params) => (
         <div>
-          <Button onClick={() => handleSwapIndices(params.row.id, 'up')}>Up</Button>
-          <Button onClick={() => handleSwapIndices(params.row.id, 'down')}>Down</Button>
+          <Button onClick={() => handleSwapIndices(params.row.id, 'up')}><KeyboardDoubleArrowUpIcon/></Button>
+          <Button onClick={() => handleSwapIndices(params.row.id, 'down')}><KeyboardDoubleArrowDownIcon/></Button>
           <Button onClick={() => handleOpendelete(params.row.id)} color="error">
-          Delete
+          <DeleteIcon/>
           </Button>
         </div>
       ),
@@ -209,20 +257,21 @@ function Company() {
       width: 200,
       renderCell: (params) => (
         <Typography
-          variant="h7"
+          variant="inherit"
           onClick={() => handleOpenDialog(params.row)} // Open dialog with selected company data
           sx={{ fontFamily: 'Prompt', cursor: 'pointer', textDecoration: 'underline' }}
         >
           {params.value}
         </Typography>
       ),
+
     },
     
     // { field: 'C_address', headerName: <Typography variant="paragraph" sx={{ fontFamily: 'Prompt'}}>ที่อยู่</Typography>, width: 200 },
     // { field: 'C_email', headerName: <Typography variant="paragraph" sx={{ fontFamily: 'Prompt'}}>อีเมล</Typography>, width: 200 },
     {
       field: 'C_pic',
-      headerName: <Typography  sx={{ fontFamily: 'Prompt'}} >รูปภาพ</Typography>,
+      headerName: <Typography  sx={{ fontFamily: 'Prompt'}} >รูปภาพโปสเตอร์</Typography>,
       width: 150,
       renderCell: (params) => (
         <a
@@ -231,7 +280,7 @@ function Company() {
           rel="noopener noreferrer"
           style={{ color: '#1976d2', textDecoration: 'underline' }}
         >
-          View Picture
+          ดูรูป
         </a>
       ),
     },
@@ -281,7 +330,7 @@ function Company() {
         </Typography>
         <Box sx={{ padding: 4 }}>
           <Grid container spacing={2}>
-            <Grid item xs={6} display="flex" justifyContent="center" alignItems="center">
+            <Grid size={6} display="flex" justifyContent="center" alignItems="center">
               <Badge badgeContent={countwait} color="secondary">
                 <Button 
                   onClick={() => handleTypeClick('WAIT')}
@@ -307,7 +356,7 @@ function Company() {
               </Badge>
             </Grid>
 
-            <Grid item xs={6} display="flex" justifyContent="center" alignItems="center">
+            <Grid size={6} display="flex" justifyContent="center" alignItems="center">
             <Badge badgeContent={countpass} color="success">
               <Button
                 onClick={() => handleTypeClick('PASS')}
@@ -340,6 +389,7 @@ function Company() {
         <DataGrid
         rows={companyData}
         columns={columns}
+        getRowId={(row) => row.C_id}
         initialState={{
           pagination: {
             paginationModel: {
@@ -357,23 +407,34 @@ function Company() {
   <DialogTitle sx={{ fontFamily: 'Prompt' }}>รายละเอียด</DialogTitle>
   <DialogContent dividers sx={{ maxHeight: 400, overflowY: 'auto' }}>
     {selectedCompany && (
-      <Box sx={{ mt: 2 }}>
-        <Typography variant="body2"  sx={{fontFamily:'Prompt'}}>ชื่อบริษัท: {selectedCompany.C_name}</Typography>
-        <Typography variant="body2"  sx={{fontFamily:'Prompt'}}>ที่อยู่บริษัท: {selectedCompany.C_address}</Typography>
-        <Typography variant="body2"  sx={{fontFamily:'Prompt'}}>อีเมลบริษัท: {selectedCompany.C_email}</Typography>
-        <Typography variant="body2"  sx={{fontFamily:'Prompt'}}>หมายเลขโทรศัพท์: {selectedCompany.C_tel}</Typography>
-        <Typography variant="body2"  sx={{fontFamily:'Prompt'}}>รายละเอียดเพิ่มเติม</Typography>
-        <Typography variant="body2"  sx={{fontFamily:'Prompt'}} style={{ whiteSpace: 'pre-line' }}>รายชื่อผู้ติดต่อ: {selectedCompany.C_detail}</Typography>
-        {(
-                  <Box sx={{ marginTop: 2 }}>
-                    <img
-                      src={selectedCompany.C_pic}
-                      alt="Preview"
-                      style={{ width: '100%', maxHeight: '300px', objectFit: 'contain' }}
-                    />
-                  </Box>
-                )}
-      </Box>
+       <Box sx={{ mt: 2 }}>
+              <Typography variant="h6">ชื่อบริษัท: {selectedCompany.C_name}</Typography>
+              <Typography variant="h6">เงินเดือน: {selectedCompany.C_salary}</Typography>
+              <Typography variant="h6">ที่อยู่บริษัท: {selectedCompany.C_address[0]?.A_address} {selectedCompany.C_address[0]?.A_subdist} {selectedCompany.C_address[0]?.A_dist} {selectedCompany.C_address[0]?.A_province} {selectedCompany.C_address[0]?.A_post}</Typography>
+              <Typography variant="h6">อีเมล: {selectedCompany.C_address[0]?.A_email}</Typography>
+              <Typography variant="h6">เบอร์โทรศัพท์: {selectedCompany.C_address[0]?.A_tel}</Typography>
+              <Typography variant="h6">ผู้ติดต่อประสานงาน: {selectedCompany.C_address[0]?.A_coordinate}</Typography>
+             
+
+              <Typography variant="h6">รายละเอียดเพิ่มเติม: </Typography>
+              <Typography>  {selectedCompany.C_detail}</Typography>
+                <Box sx={{ mt: 2 }}>
+                  <img
+                    src={selectedCompany.C_logo}
+                    alt="Preview"
+                    style={{ width: '100%', maxHeight: '300px', objectFit: 'contain' }}
+                  />
+                </Box> 
+               <Typography variant="h6" sx={{display:'flex',justifyContent:'center'}}>รูปภาพโลโก้</Typography>
+                <Box sx={{ mt: 2 }}>
+                  <img
+                    src={selectedCompany.C_pic}
+                    alt="Preview"
+                    style={{ width: '100%', maxHeight: '300px', objectFit: 'contain' }}
+                  />
+                </Box> 
+                <Typography variant="h6" sx={{display:'flex',justifyContent:'center'}}>รูปภาพโปสเตอร์</Typography>
+            </Box>
     )}
   </DialogContent>
   <DialogActions>

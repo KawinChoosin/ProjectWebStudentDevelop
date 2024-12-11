@@ -1,6 +1,7 @@
 
-import { Box, Grid, Typography } from '@mui/material';
+import { Box,  Typography } from '@mui/material';
 import Englogo from '../component/eng_logo.png';
+import Grid from '@mui/material/Grid2'
 
 function Footer() {
   // const FacebookPageEmbed = () => {
@@ -80,7 +81,7 @@ function Footer() {
       }}
     >
       <Grid container spacing={2}>
-        <Grid item xs={12} md={12}>
+        <Grid size={12}>
           <Box
             sx={{
               display: 'flex',

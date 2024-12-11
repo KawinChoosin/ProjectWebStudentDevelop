@@ -19,6 +19,7 @@ function EntaneerMind() {
               boxSizing: "border-box",
               color: "#333",
           }}>
+             <Card sx={{pl:'7%',pr:'7%',border: "1px solid #ccc",boxShadow: "0px 4px 24px rgba(0, 0, 0, 0.5)"}}>
               <div className="text-topic" style={{marginTop:"10%"}} >
               งานให้คำปรึกษาและดูแลสุขภาพจิต
               </div>
@@ -61,6 +62,7 @@ function EntaneerMind() {
                     marginRight: 'auto', // Centers the box horizontally
                   }}
                 ></Box>
+                </Card>
           </Box>
           <Footer/>
       </div>
